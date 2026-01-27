@@ -1,7 +1,7 @@
 {
-  "name": "NUIT - 夜間美容で、目覚める潤い。",
-  "short_name": "NUIT",
-  "description": "NUITは、夜間美容に着目したヘアケアブランドです。",
+  "name": "rumii - 夜間美容で、目覚める潤い。",
+  "short_name": "rumii",
+  "description": "rumiiは、夜間美容に着目したヘアケアブランドです。",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0d0d2b",

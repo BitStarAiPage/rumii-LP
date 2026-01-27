@@ -2,220 +2,232 @@
 
 import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Button } from "@/components/ui/button";
 
-// 製品ラインデータ
-const productLines = [
+// 製品データ
+const products = [
   {
-    id: "calm",
-    name: "カームナイトリペア",
-    nameEn: "CALM NIGHT REPAIR",
-    color: "#4B6FA5",
-    concern: "ダメージ・乾燥",
-    finish: "しっとり",
-    description:
-      "ダメージを受けた髪を夜間に集中補修。翌朝しっとりまとまる髪へ。",
-    features: ["ダメージ補修", "保湿", "しっとり仕上げ"],
+    id: "lotion",
+    category: "土台ケア（化粧水）",
+    name: "薬用クリアブライトローション",
+    nameEn: "CLEAR BRIGHT LOTION",
+    features: ["W有効成分", "美白", "肌荒れ防止"],
+    description: "肌荒れを防いで透きとおる肌へ。毎日のベースケアに。",
+    price: "¥1,650",
+    volume: "110mL",
+    color: "#A8D8EA",
+    badge: "BASE",
   },
   {
-    id: "relax",
-    name: "リラックスナイトリペア",
-    nameEn: "RELAX NIGHT REPAIR",
-    color: "#8B7BA5",
-    concern: "うねり・パサつき",
-    finish: "さらさら",
-    description: "くせ・うねりを抑えて、翌朝さらさらの指通りへ。",
-    features: ["くせ抑制", "なめらか", "さらさら仕上げ"],
+    id: "uv",
+    category: "朝用UV乳液",
+    name: "薬用リンクルUVエマルジョン",
+    nameEn: "WRINKLE UV EMULSION",
+    features: ["SPF37 PA+++", "美白", "UV"],
+    description: "これ1本で美白もUVも。忙しい朝の時短ケアに。",
+    price: "¥1,650",
+    volume: "80mL",
+    color: "#E8B4B8",
+    badge: "AM",
   },
   {
-    id: "deep",
-    name: "ディープナイトリペア",
-    nameEn: "DEEP NIGHT REPAIR",
-    color: "#5B4B95",
-    concern: "ハイダメージ",
-    finish: "濃密補修",
-    description:
-      "カラーやパーマで傷んだ髪を濃密に補修。翌朝しなやかな髪へ。",
-    features: ["濃密補修", "集中ケア", "しなやか仕上げ"],
+    id: "az-serum",
+    category: "毛穴ケア美容液",
+    name: "クリアブライトAZセラム",
+    nameEn: "CLEAR BRIGHT AZ SERUM",
+    features: ["アゼライン酸11%", "毛穴ケア"],
+    description: "高濃度アゼライン酸で毛穴の目立ちを徹底ケア。",
+    price: "¥2,200",
+    volume: "30mL",
+    color: "#A8D8EA",
+    badge: "PM",
+    highlight: true,
+  },
+  {
+    id: "serum",
+    category: "透明感美容液",
+    name: "薬用クリアブライトセラム",
+    nameEn: "CLEAR BRIGHT SERUM",
+    features: ["W有効成分", "透明感"],
+    description: "透けるようなつるん肌へ。くすみ・肌荒れが気になる方に。",
+    price: "¥1,980",
+    volume: "30mL",
+    color: "#C9B1D4",
+    badge: "PM",
   },
 ];
 
 /**
- * 製品ラインナップセクション
- * 3つの製品ラインを比較表形式で紹介
+ * ラインナップセクション (05. LINE UP / CTA)
+ * 比較検討と購入 - スペックを並べて迷わせない
  */
 export function LineUpSection() {
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>();
-  const { ref: productsRef, isVisible: productsVisible } =
-    useScrollAnimation<HTMLDivElement>();
-  const { ref: tableRef, isVisible: tableVisible } =
-    useScrollAnimation<HTMLDivElement>();
 
   return (
     <section
-      className="relative py-24 md:py-32 overflow-hidden"
+      id="lineup"
+      className="relative py-24 md:py-32 overflow-hidden rumii-gradient-light"
       aria-label="製品ラインナップ"
     >
-      {/* 背景グラデーション */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-yolu-midnight via-yolu-deep-blue to-yolu-midnight"
-        aria-hidden="true"
-      />
-
-      {/* 背景装飾 */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <Image
-          src="/asset_2.png"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover opacity-20 mix-blend-screen"
-        />
-        <div className="bubble w-48 h-48 -top-20 left-1/4 animate-float-slow opacity-15" />
-        <div className="bubble w-32 h-32 bottom-40 -right-10 animate-float opacity-20" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-5 max-w-[750px]">
+      <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div
           ref={titleRef}
-          className={`text-center mb-16 fade-in-up ${titleVisible ? "is-visible" : ""}`}
+          className={`text-center mb-12 fade-in-up ${titleVisible ? "is-visible" : ""}`}
         >
           <h2
-            className="text-3xl md:text-4xl tracking-[0.2em] text-white"
+            className="text-3xl md:text-4xl tracking-[0.2em] text-foreground"
             style={{ fontFamily: "var(--font-tenor), serif" }}
           >
             LINE UP
           </h2>
-          <p className="section-title-jp mt-4">
-            あなたにぴったりのシリーズを見つけて
+          <p className="text-sm text-muted-foreground tracking-wider mt-4">
+            あなたの肌悩みに合わせて選ぶ
           </p>
         </div>
 
         {/* 製品カード */}
-        <div
-          ref={productsRef}
-          className={`grid gap-6 mb-16 fade-in-up ${productsVisible ? "is-visible" : ""}`}
-        >
-          {productLines.map((product, index) => (
-            <div
-              key={product.id}
-              className="card-yolu relative overflow-hidden"
-              style={{
-                transitionDelay: `${index * 100}ms`,
-              }}
-            >
-              {/* アクセントライン */}
-              <div
-                className="absolute top-0 left-0 w-full h-1"
-                style={{ backgroundColor: product.color }}
-              />
-
-              <div className="pt-4">
-                {/* 製品名 */}
-                <div className="mb-4">
-                  <p
-                    className="text-xs tracking-widest mb-1"
-                    style={{ color: product.color }}
-                  >
-                    {product.nameEn}
-                  </p>
-                  <h3 className="text-lg font-medium text-white">
-                    {product.name}
-                  </h3>
-                </div>
-
-                {/* 悩み・仕上がり */}
-                <div className="flex gap-4 mb-4">
-                  <div className="flex-1">
-                    <p className="text-xs text-muted-foreground mb-1">お悩み</p>
-                    <p className="text-sm text-white">{product.concern}</p>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-xs text-muted-foreground mb-1">
-                      仕上がり
-                    </p>
-                    <p className="text-sm text-white">{product.finish}</p>
-                  </div>
-                </div>
-
-                {/* 説明 */}
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  {product.description}
-                </p>
-
-                {/* 特徴タグ */}
-                <div className="flex flex-wrap gap-2">
-                  {product.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="text-xs px-3 py-1 rounded-full"
-                      style={{
-                        backgroundColor: `${product.color}20`,
-                        color: product.color,
-                      }}
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+        <div className="space-y-6">
+          {products.map((product, index) => (
+            <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>
 
-        {/* 比較表 */}
-        <div
-          ref={tableRef}
-          className={`fade-in-up ${tableVisible ? "is-visible" : ""}`}
-        >
-          <div className="card-yolu overflow-x-auto">
-            <h3 className="text-center text-lg font-medium text-white mb-6">
-              製品比較表
-            </h3>
-            <table className="comparison-table">
-              <thead>
-                <tr>
-                  <th scope="col" className="text-left">シリーズ</th>
-                  <th scope="col">お悩み</th>
-                  <th scope="col">仕上がり</th>
-                </tr>
-              </thead>
-              <tbody>
-                {productLines.map((product) => (
-                  <tr key={product.id}>
-                    <td className="text-left">
-                      <span
-                        className="inline-block w-2 h-2 rounded-full mr-2"
-                        style={{ backgroundColor: product.color }}
-                      />
-                      <span className="text-white text-sm">{product.name}</span>
-                    </td>
-                    <td className="text-white text-sm">{product.concern}</td>
-                    <td className="text-white text-sm">{product.finish}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* 購入リンク */}
+        <div className="mt-16 text-center">
+          <p className="text-sm text-muted-foreground mb-6">
+            各ECサイトでお求めいただけます
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Amazon", "楽天市場", "LOHACO", "@cosme"].map((store) => (
+              <a key={store} href="#" className="btn-rumii">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-xs border-border bg-white/60 hover:bg-white/80 text-foreground backdrop-blur-sm"
+                >
+                  {store}
+                </Button>
+              </a>
+            ))}
           </div>
         </div>
 
         {/* 装飾画像 */}
-        <div className="mt-16 relative w-full aspect-[2/1] rounded-2xl overflow-hidden">
+        <div className="mt-16 relative w-full aspect-[2/1] rounded-2xl overflow-hidden shadow-md">
           <Image
             src="/asset_7.png"
-            alt="幻想的なイメージ"
+            alt="rumii製品イメージ"
             fill
-            sizes="(max-width: 768px) 100vw, 700px"
+            sizes="(max-width: 768px) 100vw, 500px"
             loading="lazy"
             className="object-cover"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-t from-yolu-midnight/60 to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent"
             aria-hidden="true"
           />
         </div>
       </div>
     </section>
+  );
+}
+
+// 製品カードコンポーネント
+function ProductCard({
+  product,
+  index,
+}: {
+  product: (typeof products)[0];
+  index: number;
+}) {
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
+
+  return (
+    <article
+      ref={ref}
+      className={`fade-in-up ${isVisible ? "is-visible" : ""}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <div
+        className={`relative bg-white/80 backdrop-blur-sm rounded-2xl p-5 border shadow-sm overflow-hidden ${
+          product.highlight
+            ? "border-[#A8D8EA] ring-2 ring-[#A8D8EA]/20"
+            : "border-white/80"
+        }`}
+      >
+        {/* アクセントライン */}
+        <div
+          className="absolute top-0 left-0 w-full h-1"
+          style={{ backgroundColor: product.color }}
+        />
+
+        {/* ヘッダー */}
+        <div className="flex items-start justify-between mb-3">
+          <div>
+            <span className="text-xs text-muted-foreground">
+              {product.category}
+            </span>
+            <span
+              className="ml-2 px-2 py-0.5 text-xs font-medium rounded-full text-white"
+              style={{ backgroundColor: product.color }}
+            >
+              {product.badge}
+            </span>
+          </div>
+          {product.highlight && (
+            <span className="px-2 py-0.5 text-xs bg-[#A8D8EA] text-white rounded-full">
+              おすすめ
+            </span>
+          )}
+        </div>
+
+        {/* 製品名 */}
+        <h3 className="text-lg font-medium text-foreground mb-1">
+          {product.name}
+        </h3>
+        <p
+          className="text-xs tracking-wider mb-3"
+          style={{ color: product.color }}
+        >
+          {product.nameEn}
+        </p>
+
+        {/* 特徴タグ */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {product.features.map((feature) => (
+            <span
+              key={feature}
+              className="text-xs px-2 py-1 rounded-full bg-muted text-foreground/80"
+            >
+              {feature}
+            </span>
+          ))}
+        </div>
+
+        {/* 説明 */}
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          {product.description}
+        </p>
+
+        {/* 価格・容量 */}
+        <div className="flex items-baseline gap-2 pt-3 border-t border-border">
+          <span
+            className="text-xl font-medium"
+            style={{
+              fontFamily: "var(--font-tenor), serif",
+              color: product.color,
+            }}
+          >
+            {product.price}
+          </span>
+          <span className="text-xs text-muted-foreground">
+            ({product.volume})
+          </span>
+        </div>
+      </div>
+    </article>
   );
 }

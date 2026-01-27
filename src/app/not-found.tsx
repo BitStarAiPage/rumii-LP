@@ -16,7 +16,7 @@ export const metadata: Metadata = {
  */
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex items-center justify-center yolu-gradient-dark">
+    <main className="min-h-screen flex items-center justify-center rumii-gradient-dark">
       <div className="container mx-auto px-5 max-w-[750px] text-center">
         {/* 404タイトル */}
         <h1
@@ -39,7 +39,7 @@ export default function NotFound() {
         {/* トップページへのリンク */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-8 py-4 bg-yolu-purple hover:bg-yolu-soft-purple text-white rounded-full transition-colors duration-300"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-rumii-purple hover:bg-rumii-soft-purple text-white rounded-full transition-colors duration-300"
         >
           <svg
             className="w-5 h-5"

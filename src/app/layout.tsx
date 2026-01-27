@@ -19,45 +19,46 @@ const tenorSans = Tenor_Sans({
 });
 
 // サイトURL（本番環境では環境変数から取得）
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nuit-beauty.example.jp";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rumii.jp";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#0d0d2b",
+  themeColor: "#FAFCFD",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "NUIT | 夜間美容で、目覚める潤い。",
-    template: "%s | NUIT",
+    default: "rumii | 光をまとわせる、スキンケア",
+    template: "%s | rumii",
   },
   description:
-    "NUITは、夜間美容に着目したヘアケアブランドです。寝ている間に髪を集中補修し、翌朝まとまりのある潤艶髪へ導きます。",
+    "rumiiは、光をまとわせるスキンケアブランドです。乾燥から肌を守り、澄みわたる透明肌へ導きます。",
   keywords: [
-    "NUIT",
-    "ニュイ",
-    "ヘアケア",
-    "シャンプー",
-    "トリートメント",
-    "夜間美容",
-    "ナイトケア",
+    "rumii",
+    "ルミー",
+    "スキンケア",
+    "化粧水",
+    "美容液",
+    "透明肌",
+    "美白",
+    "毛穴ケア",
   ],
-  authors: [{ name: "ナイトビューティー株式会社" }],
-  creator: "ナイトビューティー株式会社",
-  publisher: "ナイトビューティー株式会社",
+  authors: [{ name: "株式会社BitStar" }],
+  creator: "株式会社BitStar",
+  publisher: "株式会社BitStar",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "NUIT | 夜間美容で、目覚める潤い。",
-    description: "NUITは、夜間美容に着目したヘアケアブランドです。",
+    title: "rumii | 光をまとわせる、スキンケア",
+    description: "rumiiは、光をまとわせるスキンケアブランドです。乾燥から肌を守り、澄みわたる透明肌へ導きます。",
     url: siteUrl,
-    siteName: "NUIT - ナイトビューティー",
+    siteName: "rumii",
     locale: "ja_JP",
     type: "website",
     images: [
@@ -65,14 +66,14 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "NUIT - 夜間美容で、目覚める潤い。",
+        alt: "rumii - 光をまとわせる、スキンケア",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NUIT | 夜間美容で、目覚める潤い。",
-    description: "NUITは、夜間美容に着目したヘアケアブランドです。",
+    title: "rumii | 光をまとわせる、スキンケア",
+    description: "rumiiは、光をまとわせるスキンケアブランドです。",
     images: ["/og-image.png"],
   },
   robots: {

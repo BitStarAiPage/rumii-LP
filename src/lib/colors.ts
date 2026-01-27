@@ -1,5 +1,5 @@
 /**
- * NUITブランドカラー定義
+ * rumiiブランドカラー定義
  * Tailwind CSSのglobals.cssと同期して使用
  */
 

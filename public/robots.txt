@@ -1,6 +1,6 @@
-# robots.txt for NUIT
+# robots.txt for rumii
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://nuit-beauty.example.jp/sitemap.xml
+Sitemap: https://rumii-beauty.example.jp/sitemap.xml

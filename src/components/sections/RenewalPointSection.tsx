@@ -21,30 +21,24 @@ export function RenewalPointSection() {
 
   return (
     <section
-      className="relative py-24 md:py-32 yolu-gradient-dark overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden"
       aria-label="リニューアルポイント"
     >
-      {/* 背景装飾 */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="bubble w-40 h-40 -top-10 -right-10 animate-float-slow opacity-20" />
-        <div className="bubble w-28 h-28 bottom-20 -left-10 animate-float opacity-15" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-5 max-w-[750px]">
+      <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div
           ref={titleRef}
           className={`text-center mb-16 fade-in-up ${titleVisible ? "is-visible" : ""}`}
         >
           <h2
-            className="text-3xl md:text-4xl tracking-[0.2em] text-white"
+            className="text-3xl md:text-4xl tracking-[0.2em] text-foreground"
             style={{ fontFamily: "var(--font-tenor), serif" }}
           >
             RENEWAL
             <br />
             POINT
           </h2>
-          <p className="section-title-jp mt-4">さらに進化したポイント</p>
+          <p className="text-sm text-muted-foreground tracking-wider mt-4">さらに進化したポイント</p>
         </div>
 
         {/* ポイント1 */}
@@ -52,26 +46,26 @@ export function RenewalPointSection() {
           ref={point1Ref}
           className={`mb-16 fade-in-up ${point1Visible ? "is-visible" : ""}`}
         >
-          <div className="card-yolu">
+          <div className="card-rumii">
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-yolu-soft-purple text-sm tracking-widest">
+              <span className="text-primary text-sm tracking-widest">
                 POINT 01
               </span>
             </div>
-            <h3 className="text-lg md:text-xl font-medium mb-4 text-white">
-              ナイトケラチン・
+            <h3 className="text-lg md:text-xl font-medium mb-4 text-foreground">
+              プリズムセラミド配合で
               <wbr />
-              アセチルグルコサミンを新配合
+              光を纏う透明肌へ
             </h3>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              髪の主成分であるケラチンと、うるおい成分のアセチルグルコサミンを新たに配合。寝ている間に髪の内部まで浸透し、ダメージを集中補修します。
+              独自のプリズムセラミドが肌表面を整え、光を美しく反射。まるでミラーのような透明感とツヤを実現します。
             </p>
             <div className="mt-6 relative w-full aspect-[2/1] rounded-xl overflow-hidden">
               <Image
                 src="/asset_10.png"
-                alt="髪の補修成分イメージ"
+                alt="プリズムセラミドイメージ"
                 fill
-                sizes="(max-width: 768px) 100vw, 700px"
+                sizes="(max-width: 768px) 100vw, 500px"
                 loading="lazy"
                 className="object-cover"
               />
@@ -84,26 +78,26 @@ export function RenewalPointSection() {
           ref={point2Ref}
           className={`mb-16 fade-in-up delay-200 ${point2Visible ? "is-visible" : ""}`}
         >
-          <div className="card-yolu">
+          <div className="card-rumii">
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-yolu-soft-purple text-sm tracking-widest">
+              <span className="text-primary text-sm tracking-widest">
                 POINT 02
               </span>
             </div>
-            <h3 className="text-lg md:text-xl font-medium mb-4 text-white">
-              睡眠浸透成分に
+            <h3 className="text-lg md:text-xl font-medium mb-4 text-foreground">
+              モーニングブースト成分で
               <wbr />
-              ナイトセラミドEXを新配合
+              朝の輝きをサポート
             </h3>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              睡眠中の髪は、日中に比べて成分が浸透しやすい状態に。新配合のナイトセラミドEXが、その時間を最大限に活かして髪を潤いで満たします。
+              目覚めの瞬間から肌に活力を与えるモーニングブースト成分。一日中続く透明感をサポートします。
             </p>
             <div className="mt-6 relative w-full aspect-[2/1] rounded-xl overflow-hidden">
               <Image
                 src="/asset_5.png"
-                alt="ナイトセラミドEXイメージ"
+                alt="モーニングブースト成分イメージ"
                 fill
-                sizes="(max-width: 768px) 100vw, 700px"
+                sizes="(max-width: 768px) 100vw, 500px"
                 loading="lazy"
                 className="object-cover"
               />
@@ -116,24 +110,24 @@ export function RenewalPointSection() {
           ref={point3Ref}
           className={`mb-16 fade-in-up delay-300 ${point3Visible ? "is-visible" : ""}`}
         >
-          <div className="card-yolu">
+          <div className="card-rumii">
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-yolu-soft-purple text-sm tracking-widest">
+              <span className="text-primary text-sm tracking-widest">
                 POINT 03
               </span>
             </div>
-            <h3 className="text-lg md:text-xl font-medium mb-4 text-white">
-              ボトル・パッケージを新デザイン
+            <h3 className="text-lg md:text-xl font-medium mb-4 text-foreground">
+              シルバーボトルの新デザイン
             </h3>
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-              夜の静けさと癒しを表現した新デザイン。バスルームに置くだけで、特別なナイトケアタイムを演出します。
+              光を反射するシルバーボトルは、まさにプリズムスキンを体現。洗練されたデザインで、毎日のスキンケアを特別な時間に。
             </p>
             <div className="mt-6 relative w-full aspect-[2/1] rounded-xl overflow-hidden">
               <Image
                 src="/asset_9.png"
-                alt="リラックスシーン"
+                alt="シルバーボトル"
                 fill
-                sizes="(max-width: 768px) 100vw, 700px"
+                sizes="(max-width: 768px) 100vw, 500px"
                 loading="lazy"
                 className="object-cover"
               />
@@ -146,24 +140,24 @@ export function RenewalPointSection() {
           ref={imageRef}
           className={`mt-20 fade-in-up ${imageVisible ? "is-visible" : ""}`}
         >
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
             <Image
               src="/asset_8.png"
-              alt="美しく輝く髪"
+              alt="透明感あふれる肌"
               fill
-              sizes="(max-width: 768px) 100vw, 750px"
+              sizes="(max-width: 768px) 100vw, 500px"
               loading="lazy"
               className="object-cover"
             />
             <div
-              className="absolute inset-0 bg-gradient-to-t from-yolu-midnight/60 to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"
               aria-hidden="true"
             />
             <div className="absolute bottom-6 left-6 right-6 text-center">
-              <p className="text-white text-lg md:text-xl font-medium leading-relaxed">
-                翌朝、まとまりよく
+              <p className="text-foreground text-lg md:text-xl font-medium leading-relaxed">
+                目覚めた瞬間から
                 <br />
-                潤いあふれる艶髪へ
+                輝く透明肌へ
               </p>
             </div>
           </div>

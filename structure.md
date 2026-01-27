@@ -1,9 +1,9 @@
-# NUIT Renewal - プロジェクト構成図
+# rumii Renewal - プロジェクト構成図
 
 ```
-yolu-25renewal/
+rumii-25renewal/
 ├── public/
-│   ├── asset_1.png          # ヒーロー画像（眠る女性とNUIT製品）
+│   ├── asset_1.png          # ヒーロー画像（眠る女性とrumii製品）
 │   ├── asset_2.png          # 背景装飾（水の泡・光の粒子）
 │   ├── asset_3.png          # 夜のシーン（眠る女性）
 │   ├── asset_4.png          # 朝のシーン（目覚める女性）
@@ -63,8 +63,8 @@ yolu-25renewal/
 
 ## 架空会社情報
 
-- **ブランド名**: NUIT（ニュイ）
+- **ブランド名**: rumii（ニュイ）
 - **会社名**: ナイトビューティー株式会社
 - **住所**: 〒150-0000 東京都渋谷区神宮前1-2-3 ナイトビル5F
 - **電話**: 03-0000-1234
-- **メール**: info@nuit-beauty.example.jp
+- **メール**: info@rumii-beauty.example.jp
