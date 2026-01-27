@@ -22,14 +22,11 @@ export function FixedSidebars() {
   const rightVideoRef = useRef<HTMLVideoElement>(null);
 
   // 動画の再生速度を設定
-  useEffect(() => {
-    if (leftVideoRef.current) {
-      leftVideoRef.current.playbackRate = 0.25;
+  const setPlaybackRate = (video: HTMLVideoElement | null) => {
+    if (video) {
+      video.playbackRate = 0.15;
     }
-    if (rightVideoRef.current) {
-      rightVideoRef.current.playbackRate = 0.25;
-    }
-  }, []);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +75,7 @@ export function FixedSidebars() {
           loop
           muted
           playsInline
+          onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
         >
           <source src="/back/back_video01.mp4" type="video/mp4" />
         </video>
@@ -146,6 +144,7 @@ export function FixedSidebars() {
           loop
           muted
           playsInline
+          onLoadedMetadata={(e) => setPlaybackRate(e.currentTarget)}
         >
           <source src="/back/back_video01.mp4" type="video/mp4" />
         </video>

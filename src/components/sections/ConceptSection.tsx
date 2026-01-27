@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 /**
@@ -15,9 +16,20 @@ export function ConceptSection() {
   return (
     <section
       id="concept"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="sticky top-0 relative py-24 md:py-32 overflow-hidden z-10"
       aria-label="コンセプト"
+      style={{
+        backgroundImage: "url('/back/back_image01.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
+      {/* 上部グラデーション（前のセクションからの自然な遷移） */}
+      <div
+        className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/80 via-white/40 to-transparent pointer-events-none"
+        aria-hidden="true"
+      />
+
       {/* 装飾: 放射状の光 */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-30"
@@ -47,6 +59,17 @@ export function ConceptSection() {
           ref={copyRef}
           className={`space-y-8 fade-in-up delay-200 ${copyVisible ? "is-visible" : ""}`}
         >
+          {/* 画像 */}
+          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-8">
+            <Image
+              src="/asset_1.png"
+              alt="rumii製品イメージ"
+              fill
+              sizes="(max-width: 768px) 100vw, 500px"
+              className="object-cover"
+            />
+          </div>
+
           <p
             className="text-base md:text-lg text-center text-muted-foreground leading-loose"
             style={{ fontFamily: "var(--font-tenor), 'Hiragino Mincho ProN', 'Yu Mincho', serif" }}
@@ -71,35 +94,6 @@ export function ConceptSection() {
           </p>
         </div>
 
-        {/* 装飾: プリズム効果 */}
-        <div className="flex justify-center mt-16">
-          <div className="relative">
-            {/* ミラー円形 */}
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-white via-[#F0FCFF] to-[#E0F7FA] shadow-lg flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#FFF0F5]/50 via-white to-[#E0F7FA]/50 flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-foreground/40"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-              </div>
-            </div>
-            {/* 光の輪 */}
-            <div
-              className="absolute -inset-4 rounded-full border border-white/30 animate-pulse-glow"
-              aria-hidden="true"
-            />
-          </div>
-        </div>
       </div>
     </section>
   );

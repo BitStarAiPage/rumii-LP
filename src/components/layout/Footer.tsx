@@ -8,7 +8,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative py-16 overflow-hidden rumii-gradient-reverse">
+    <footer className="relative py-16 overflow-hidden z-20">
+      {/* 背景レイヤー */}
+      <div
+        className="absolute inset-0 rumii-gradient-reverse"
+        aria-hidden="true"
+      />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* ブランドロゴ */}
         <div className="text-center mb-10">

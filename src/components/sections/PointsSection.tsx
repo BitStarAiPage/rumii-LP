@@ -45,9 +45,14 @@ export function PointsSection() {
   return (
     <section
       id="points"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden z-20"
       aria-label="rumiiの3つのポイント"
     >
+      {/* 背景レイヤー */}
+      <div
+        className="absolute inset-0 bg-[#E8F6FD]"
+        aria-hidden="true"
+      />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div
@@ -94,7 +99,7 @@ function PointCard({
     >
       {/* 番号バッジ */}
       <div className="flex justify-center mb-8">
-        <div className="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center border border-border/50">
+        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center">
           <span
             className="text-lg text-foreground"
             style={{ fontFamily: "var(--font-tenor), serif" }}
@@ -106,7 +111,7 @@ function PointCard({
 
       {/* タイトル */}
       <div className="text-center mb-8">
-        <h3 className="text-xl md:text-2xl font-medium text-foreground leading-relaxed mb-2">
+        <h3 className="text-[32px] font-medium text-foreground leading-relaxed mb-2">
           {point.title}
         </h3>
         <p className="text-sm text-primary tracking-wider">

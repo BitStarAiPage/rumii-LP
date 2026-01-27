@@ -15,9 +15,14 @@ export function UsageSection() {
   return (
     <section
       id="usage"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden z-20"
       aria-label="スタイル提案"
     >
+      {/* 背景レイヤー */}
+      <div
+        className="absolute inset-0 bg-[#FAFCFD]"
+        aria-hidden="true"
+      />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div

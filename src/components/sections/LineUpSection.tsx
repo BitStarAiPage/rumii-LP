@@ -68,9 +68,14 @@ export function LineUpSection() {
   return (
     <section
       id="lineup"
-      className="relative py-24 md:py-32 overflow-hidden rumii-gradient-light"
+      className="relative py-24 md:py-32 overflow-hidden z-20"
       aria-label="製品ラインナップ"
     >
+      {/* 背景レイヤー */}
+      <div
+        className="absolute inset-0 rumii-gradient-light"
+        aria-hidden="true"
+      />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div
@@ -125,10 +130,18 @@ export function LineUpSection() {
             loading="lazy"
             className="object-cover"
           />
-          <div
-            className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent"
-            aria-hidden="true"
-          />
+          {/* バナー画像 */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full max-w-[500px] px-5">
+              <Image
+                src="/banner/banner_image01.png"
+                alt="バナー"
+                width={500}
+                height={200}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -9,14 +7,15 @@ import { Button } from "@/components/ui/button";
  * 世界観への没入 - 一目で「どんな肌になれるか」を伝える
  */
 export function HeroSection() {
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({
-    threshold: 0.1,
-  });
-
   return (
     <section
       className="relative min-h-screen overflow-hidden"
       aria-label="メインビジュアル"
+      style={{
+        backgroundImage: "url('/back/back_image05.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
       {/* メインコンテンツ */}
       <div className="relative z-10 container mx-auto px-5 pt-16 pb-20 max-w-[500px]">
@@ -29,44 +28,6 @@ export function HeroSection() {
             rumii
           </h1>
         </header>
-
-        {/* バッジ */}
-        <div className="flex justify-center mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-white/80 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#E8B4B8] to-[#A8D8EA]" />
-            <span className="text-xs tracking-wider text-foreground/80">
-              光をまとう ミラー肌
-            </span>
-          </span>
-        </div>
-
-        {/* メインビジュアル */}
-        <div
-          ref={ref}
-          className={`relative fade-in-up ${isVisible ? "is-visible" : ""}`}
-        >
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src="/asset_1.png"
-              alt="シルバーボトルが輝くrumii製品集合写真"
-              fill
-              sizes="(max-width: 768px) 100vw, 500px"
-              className="object-cover"
-              priority
-            />
-            {/* 光の反射オーバーレイ */}
-            <div
-              className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/40"
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* スポットライトエフェクト */}
-          <div
-            className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-gradient-radial from-white/60 to-transparent blur-2xl"
-            aria-hidden="true"
-          />
-        </div>
 
         {/* キャッチコピー */}
         <div className="text-center mt-12 space-y-4">
@@ -82,7 +43,7 @@ export function HeroSection() {
         </div>
 
         {/* CTAボタン */}
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-[400px]">
           <a href="#lineup" className="btn-rumii">
             <Button
               variant="outline"
@@ -131,6 +92,12 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* 下部グラデーション（次のセクションへの自然な遷移） */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 via-white/40 to-transparent pointer-events-none"
+        aria-hidden="true"
+      />
     </section>
   );
 }
