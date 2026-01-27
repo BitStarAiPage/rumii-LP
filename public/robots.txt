@@ -1,0 +1,6 @@
+# robots.txt for NUIT
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nuit-beauty.example.jp/sitemap.xml
