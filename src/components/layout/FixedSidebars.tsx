@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 // ナビゲーションメニュー項目
 const navItems = [
@@ -21,10 +22,10 @@ export function FixedSidebars() {
   const leftVideoRef = useRef<HTMLVideoElement>(null);
   const rightVideoRef = useRef<HTMLVideoElement>(null);
 
-  // 動画の再生速度を設定
+  // 動画の再生速度を設定（0.25未満はブラウザがサポートしていない場合が多い）
   const setPlaybackRate = (video: HTMLVideoElement | null) => {
     if (video) {
-      video.playbackRate = 0.15;
+      video.playbackRate = 0.5;
     }
   };
 
@@ -70,7 +71,8 @@ export function FixedSidebars() {
         {/* 動画オーバーレイ */}
         <video
           ref={leftVideoRef}
-          className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none will-change-transform"
+          style={{ transform: 'translateZ(0)' }}
           autoPlay
           loop
           muted
@@ -84,10 +86,15 @@ export function FixedSidebars() {
           <div className="flex-shrink-0">
             <a
               href="#"
-              className="block text-foreground hover:text-primary transition-colors"
-              style={{ fontFamily: "var(--font-tenor), serif" }}
+              className="block hover:opacity-80 transition-opacity"
             >
-              <span className="text-xl tracking-[0.2em]">rumii</span>
+              <Image
+                src="/logo/logo_image02.png"
+                alt="rumii"
+                width={80}
+                height={30}
+                className="h-auto"
+              />
             </a>
           </div>
 
@@ -139,7 +146,8 @@ export function FixedSidebars() {
         {/* 動画オーバーレイ */}
         <video
           ref={rightVideoRef}
-          className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none will-change-transform"
+          style={{ transform: 'translateZ(0)' }}
           autoPlay
           loop
           muted

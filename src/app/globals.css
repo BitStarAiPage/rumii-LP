@@ -669,7 +669,8 @@
 /* メインコンテンツの最大幅 */
 :root {
   --main-content-max-width: 500px;
-  --fixed-sidebar-width: calc((100vw - var(--main-content-max-width)) / 2);
+  --fixed-sidebar-min-width: 50px;
+  --fixed-sidebar-width: max(var(--fixed-sidebar-min-width), calc((100vw - var(--main-content-max-width)) / 2));
 }
 
 /* 固定サイドバー共通スタイル */
@@ -678,16 +679,10 @@
   top: 0;
   bottom: 0;
   width: var(--fixed-sidebar-width);
+  min-width: var(--fixed-sidebar-min-width);
   z-index: 40;
   pointer-events: auto;
-  display: none; /* デフォルトは非表示（SP） */
-}
-
-/* PC表示時のみ表示（メインコンテンツ幅 + 余白が必要な場合） */
-@media (min-width: 800px) {
-  .fixed-sidebar {
-    display: block;
-  }
+  display: block; /* 常に表示 */
 }
 
 /* 左サイドバー */
@@ -713,11 +708,18 @@
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none; /* デフォルトは非表示 */
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 2rem 1rem;
+}
+
+/* 十分な幅がある場合のみサイドバー内コンテンツを表示 */
+@media (min-width: 800px) {
+  .fixed-sidebar-content {
+    display: flex;
+  }
 }
 
 /* 縦書きテキスト - ダークカラーに変更 */
@@ -789,13 +791,4 @@
   max-width: var(--main-content-max-width);
   margin-left: auto;
   margin-right: auto;
-}
-
-/* PC表示時：サイドバーの上に重ならないよう配置 */
-@media (min-width: 800px) {
-  .main-content-with-sidebars {
-    /* 中央揃えを維持 */
-    margin-left: auto;
-    margin-right: auto;
-  }
 }

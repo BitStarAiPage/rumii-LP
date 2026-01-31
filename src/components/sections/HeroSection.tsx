@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -20,12 +21,16 @@ export function HeroSection() {
       {/* メインコンテンツ */}
       <div className="relative z-10 container mx-auto px-5 pt-16 pb-20 max-w-[500px]">
         {/* ブランドロゴ */}
-        <header className="text-center mb-8">
-          <h1
-            className="text-4xl md:text-5xl tracking-[0.3em] text-foreground"
-            style={{ fontFamily: "var(--font-tenor), serif" }}
-          >
-            rumii
+        <header className="flex justify-center mb-8">
+          <h1>
+            <Image
+              src="/logo/logo_image02.png"
+              alt="rumii"
+              width={150}
+              height={50}
+              className="h-auto"
+              priority
+            />
           </h1>
         </header>
 

@@ -45,25 +45,25 @@ export function PointsSection() {
   return (
     <section
       id="points"
-      className="relative py-24 md:py-32 overflow-hidden z-20"
+      className="relative py-16 md:py-24 overflow-hidden z-20"
       aria-label="rumiiの3つのポイント"
     >
       {/* 背景レイヤー */}
       <div
-        className="absolute inset-0 bg-[#E8F6FD]"
+        className="absolute inset-0 bg-[#F6FAFE]"
         aria-hidden="true"
       />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div
           ref={titleRef}
-          className={`text-center mb-20 fade-in-up ${titleVisible ? "is-visible" : ""}`}
+          className={`text-center mb-12 fade-in-up ${titleVisible ? "is-visible" : ""}`}
         >
-          <p className="text-xs tracking-[0.3em] text-primary mb-4">
+          <p className="text-xs tracking-[0.3em] text-primary mb-3">
             REASON TO BELIEVE
           </p>
           <h2
-            className="text-2xl md:text-3xl tracking-[0.1em] text-foreground"
+            className="text-xl md:text-2xl tracking-[0.1em] text-foreground"
             style={{ fontFamily: "var(--font-tenor), serif" }}
           >
             rumiiの3つのポイント
@@ -71,9 +71,14 @@ export function PointsSection() {
         </div>
 
         {/* ポイント */}
-        <div className="space-y-24">
+        <div className="space-y-12">
           {points.map((point, index) => (
-            <PointCard key={point.id} point={point} index={index} />
+            <PointCard
+              key={point.id}
+              point={point}
+              index={index}
+              isLast={index === points.length - 1}
+            />
           ))}
         </div>
       </div>
@@ -85,9 +90,11 @@ export function PointsSection() {
 function PointCard({
   point,
   index,
+  isLast,
 }: {
   point: (typeof points)[0];
   index: number;
+  isLast: boolean;
 }) {
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>();
 
@@ -97,30 +104,31 @@ function PointCard({
       className={`fade-in-up ${isVisible ? "is-visible" : ""}`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      {/* 番号バッジ */}
-      <div className="flex justify-center mb-8">
-        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center">
-          <span
-            className="text-lg text-foreground"
-            style={{ fontFamily: "var(--font-tenor), serif" }}
-          >
-            {point.id}
-          </span>
+      {/* 番号 + タイトル */}
+      <div className="flex items-center gap-4 mb-4">
+        <span
+          className="text-3xl text-primary/60 font-light"
+          style={{ fontFamily: "var(--font-tenor), serif" }}
+        >
+          {point.id}
+        </span>
+        <div>
+          <h3 className="text-lg md:text-xl font-medium text-foreground leading-tight">
+            {point.title}
+          </h3>
+          <p className="text-xs text-primary tracking-wider mt-1">
+            {point.subtitle}
+          </p>
         </div>
       </div>
 
-      {/* タイトル */}
-      <div className="text-center mb-8">
-        <h3 className="text-[32px] font-medium text-foreground leading-relaxed mb-2">
-          {point.title}
-        </h3>
-        <p className="text-sm text-primary tracking-wider">
-          {point.subtitle}
-        </p>
-      </div>
-
       {/* 画像 */}
-      <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden shadow-lg mb-8">
+      <div
+        className={`relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md mb-4 transition-all duration-700 ease-out ${
+          isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
+        }`}
+        style={{ transitionDelay: `${index * 100 + 150}ms` }}
+      >
         <Image
           src={point.image}
           alt={point.title}
@@ -132,17 +140,23 @@ function PointCard({
       </div>
 
       {/* 説明文 */}
-      <div className="text-center">
-        <p className="text-sm md:text-base text-muted-foreground leading-loose mb-4">
+      <div className="pl-1">
+        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-2">
           {point.description}
         </p>
         {point.note && (
-          <p className="text-xs text-muted-foreground/70">
+          <p className="text-xs text-muted-foreground/60">
             {point.note}
           </p>
         )}
       </div>
 
+      {/* 区切り線 */}
+      {!isLast && (
+        <div className="flex justify-center mt-8">
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+        </div>
+      )}
     </article>
   );
 }
