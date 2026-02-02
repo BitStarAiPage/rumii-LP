@@ -190,7 +190,7 @@ function ProductCard({
       <div className="mt-6">
         <a
           href="#"
-          className="flex items-center justify-center gap-2 w-[70%] md:w-[55%] mx-auto py-4 rounded-full bg-foreground text-white text-sm tracking-wider transition-opacity hover:opacity-90"
+          className="flex items-center justify-center gap-2 w-[70%] md:w-[55%] mx-auto py-3 rounded-full bg-foreground text-white text-sm tracking-wider transition-opacity hover:opacity-90"
         >
           <svg
             className="w-5 h-5"
