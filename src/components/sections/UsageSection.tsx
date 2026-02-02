@@ -140,9 +140,16 @@ function ProductCard({
           className="object-contain"
         />
         {/* カテゴリラベル（左上） */}
-        <span className="absolute top-0 -left-8 px-2 py-0.5 text-[10px] tracking-wider text-[#4BACB8] bg-[#E0F7FA] rounded-full">
-          {product.category}
-        </span>
+        <div className={`absolute top-0 flex gap-1.5 ${product.nameJa.includes("薬用") ? "-left-[4.5rem]" : "-left-10"}`}>
+          <span className="px-2.5 py-1 text-[11px] tracking-wider text-[#4BACB8] bg-[#E0F7FA] rounded-full">
+            {product.category}
+          </span>
+          {product.nameJa.includes("薬用") && (
+            <span className="px-2.5 py-1 text-[11px] tracking-wider text-[#9B8AB8] bg-[#F0E8F5] rounded-full">
+              薬用
+            </span>
+          )}
+        </div>
       </div>
 
       {/* 英語名 */}
@@ -157,6 +164,11 @@ function ProductCard({
       >
         {product.nameJa}
       </h3>
+
+      {/* SPF表記（UV乳液のみ） */}
+      {product.id === "uv" && (
+        <p className="text-sm text-[#4BACB8] font-medium mb-2">SPF37 PA+++</p>
+      )}
 
       {/* 説明文 */}
       <p className="text-sm text-muted-foreground leading-relaxed mb-4">
