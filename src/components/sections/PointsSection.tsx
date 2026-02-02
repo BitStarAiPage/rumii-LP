@@ -12,7 +12,7 @@ const points = [
     description:
       "「クリアブライトAZセラム」に高濃度のアゼライン酸を配合。肌のざらつきや毛穴悩みにダイレクトに届きます。",
     note: "※整肌成分",
-    image: "/other/other_image01.png",
+    image: "/other/other_image05.png",
     size: "85%",
   },
   {

@@ -69,7 +69,7 @@ export function UsageSection() {
 
   return (
     <section
-      id="usage"
+      id="product"
       className="relative py-20 md:py-28 overflow-hidden z-20"
       aria-label="製品一覧"
     >
