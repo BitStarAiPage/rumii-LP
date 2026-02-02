@@ -7,6 +7,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const products = [
   {
     id: "lotion",
+    category: "化粧水",
     nameEn: "CLEAR BRIGHT LOTION",
     nameJa: "薬用クリアブライトローション",
     description:
@@ -19,6 +20,7 @@ const products = [
   },
   {
     id: "uv",
+    category: "UV乳液",
     nameEn: "WRINKLE UV EMULSION",
     nameJa: "薬用リンクルUVエマルジョン",
     description:
@@ -31,6 +33,7 @@ const products = [
   },
   {
     id: "az-serum",
+    category: "美容液",
     nameEn: "CLEAR BRIGHT AZ SERUM",
     nameJa: "クリアブライトAZセラム",
     description:
@@ -43,6 +46,7 @@ const products = [
   },
   {
     id: "serum",
+    category: "美容液",
     nameEn: "CLEAR BRIGHT SERUM",
     nameJa: "薬用クリアブライトセラム",
     description:
@@ -123,7 +127,7 @@ function ProductCard({
   return (
     <article
       ref={ref}
-      className={`w-[90%] mx-auto bg-white/70 backdrop-blur-sm rounded-2xl py-6 px-8 shadow-sm border border-white/80 fade-in-up ${isVisible ? "is-visible" : ""}`}
+      className={`w-[90%] mx-auto bg-white/70 backdrop-blur-sm rounded-2xl pt-12 pb-6 px-8 shadow-sm border border-white/80 fade-in-up ${isVisible ? "is-visible" : ""}`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* 製品画像 */}
@@ -135,6 +139,10 @@ function ProductCard({
           sizes="(max-width: 768px) 45vw, 180px"
           className="object-contain"
         />
+        {/* カテゴリラベル（左上） */}
+        <span className="absolute top-0 -left-8 px-2 py-0.5 text-[10px] tracking-wider text-[#4BACB8] bg-[#E0F7FA] rounded-full">
+          {product.category}
+        </span>
       </div>
 
       {/* 英語名 */}
@@ -182,7 +190,7 @@ function ProductCard({
       <div className="mt-6">
         <a
           href="#"
-          className="flex items-center justify-center gap-2 w-[55%] mx-auto py-4 rounded-full bg-[#4BACB8] text-white text-sm tracking-wider transition-opacity hover:opacity-90"
+          className="flex items-center justify-center gap-2 w-[70%] md:w-[55%] mx-auto py-4 rounded-full bg-foreground text-white text-sm tracking-wider transition-opacity hover:opacity-90"
         >
           <svg
             className="w-5 h-5"

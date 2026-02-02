@@ -118,14 +118,14 @@ function ProductCard({
           sizes="130px"
           className="object-contain"
         />
+        {/* カテゴリラベル（左上） */}
+        <span className="absolute top-0 left-0 px-2 py-0.5 text-[10px] tracking-wider text-[#4BACB8] bg-[#E0F7FA] rounded-full">
+          {product.category}
+        </span>
       </div>
 
       {/* 製品情報 */}
       <div className="text-center">
-        {/* カテゴリラベル */}
-        <span className="inline-block px-2.5 py-1 text-[10px] tracking-wider text-[#4BACB8] bg-[#E0F7FA] rounded-full mb-2">
-          {product.category}
-        </span>
         <h3
           className="text-xs text-foreground leading-relaxed mb-1 line-clamp-2"
           style={{ fontFamily: "var(--font-zen-kaku), sans-serif" }}

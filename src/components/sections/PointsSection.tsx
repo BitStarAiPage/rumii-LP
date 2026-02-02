@@ -13,6 +13,7 @@ const points = [
       "「クリアブライトAZセラム」に高濃度のアゼライン酸を配合。肌のざらつきや毛穴悩みにダイレクトに届きます。",
     note: "※整肌成分",
     image: "/other/other_image01.png",
+    size: "85%",
   },
   {
     id: "02",
@@ -21,7 +22,8 @@ const points = [
     description:
       "ナイアシンアミド×グリチルリチン酸ジカリウムを配合。美白※1と抗炎症のダブル効果で、透けるような「つるん肌」へ。",
     note: "※1 メラニンの生成を抑え、シミ・そばかすを防ぐ",
-    image: "/asset_10.png",
+    image: "/other/other_image03.png",
+    size: "65%",
   },
   {
     id: "03",
@@ -30,7 +32,8 @@ const points = [
     description:
       "パッチテスト済み。高機能でありながら、刺激が気になる敏感肌でも使いやすい処方で安心。",
     note: "※すべての方に刺激が起こらないわけではありません",
-    image: "/asset_8.png",
+    image: "/other/other_image04.png",
+    size: "65%",
   },
 ];
 
@@ -45,14 +48,9 @@ export function PointsSection() {
   return (
     <section
       id="points"
-      className="relative py-16 md:py-24 overflow-hidden z-20"
+      className="relative py-[120px] overflow-hidden z-20 bg-[#E8F4FC]"
       aria-label="rumiiの3つのポイント"
     >
-      {/* 背景レイヤー */}
-      <div
-        className="absolute inset-0 bg-[#E8F4FC]"
-        aria-hidden="true"
-      />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div
@@ -105,7 +103,7 @@ function PointCard({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* 番号 + タイトル */}
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex items-center gap-4 mb-6 ml-[30px]">
         <span
           className="text-5xl text-primary/60 font-light"
           style={{ fontFamily: "var(--font-tenor), serif" }}
@@ -127,18 +125,18 @@ function PointCard({
 
       {/* 画像 */}
       <div
-        className={`relative w-[90%] mx-auto aspect-[16/9] rounded-lg overflow-hidden shadow-md mb-8 transition-all duration-700 ease-out ${
+        className={`mx-auto rounded-lg overflow-hidden mb-8 transition-all duration-700 ease-out ${
           isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
         }`}
-        style={{ transitionDelay: `${index * 100 + 150}ms` }}
+        style={{ transitionDelay: `${index * 100 + 150}ms`, width: point.size }}
       >
         <Image
           src={point.image}
           alt={point.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 500px"
+          width={500}
+          height={500}
           loading="lazy"
-          className="object-cover"
+          className="w-full h-auto"
         />
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, useEffect } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 /**
@@ -12,6 +13,13 @@ export function ConceptSection() {
     useScrollAnimation<HTMLDivElement>();
   const { ref: copyRef, isVisible: copyVisible } =
     useScrollAnimation<HTMLDivElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
 
   return (
     <div className="relative z-10">
@@ -25,6 +33,19 @@ export function ConceptSection() {
           backgroundPosition: "center",
         }}
       >
+      {/* 背景動画 */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none will-change-transform"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      >
+        <source src="/back/back_video01.mp4" type="video/mp4" />
+      </video>
+
       {/* 上部グラデーション（前のセクションからの自然な遷移） */}
       <div
         className="absolute -top-px left-0 right-0 h-28 pointer-events-none z-20"
@@ -66,9 +87,15 @@ export function ConceptSection() {
           className={`space-y-8 fade-in-up delay-200 ${copyVisible ? "is-visible" : ""}`}
         >
           {/* 画像 */}
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-8">
+          <div
+            className="relative w-full aspect-[4/3] mb-8"
+            style={{
+              maskImage: "radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%)",
+            }}
+          >
             <Image
-              src="/asset_1.png"
+              src="/other/other_image02.png"
               alt="rumii製品イメージ"
               fill
               sizes="(max-width: 768px) 100vw, 500px"
@@ -77,7 +104,7 @@ export function ConceptSection() {
           </div>
 
           <p
-            className="text-base md:text-lg text-center text-muted-foreground leading-loose"
+            className="text-base md:text-lg text-center text-muted-foreground leading-loose mt-16"
             style={{ fontFamily: "var(--font-tenor), 'Hiragino Mincho ProN', 'Yu Mincho', serif" }}
           >
             美白も、UVも、デザインも。
@@ -102,8 +129,6 @@ export function ConceptSection() {
 
       </div>
       </section>
-      {/* スクロール用スペーサー - 下のパディングが完全に表示されてからPointsSectionが来るようにする */}
-      <div className="h-[120px]" aria-hidden="true" />
     </div>
   );
 }

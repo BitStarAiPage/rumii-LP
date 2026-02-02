@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 /**
  * フッターコンポーネント (06. フッター)
  * ブランドロゴ、SNSリンク、会社情報を表示
@@ -22,15 +24,13 @@ export function Footer() {
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* ブランドロゴ */}
         <div className="text-center mb-10">
-          <h2
-            className="text-3xl tracking-[0.3em] text-foreground"
-            style={{ fontFamily: "var(--font-tenor), serif" }}
-          >
-            rumii
-          </h2>
-          <p className="text-xs text-muted-foreground mt-2 tracking-wider">
-            光をまとわせる、スキンケア
-          </p>
+          <Image
+            src="/logo/logo_image01.png"
+            alt="rumii"
+            width={160}
+            height={53}
+            className="h-auto mx-auto"
+          />
         </div>
 
         {/* SNSリンク */}
@@ -66,12 +66,6 @@ export function Footer() {
 
         {/* リンク */}
         <div className="flex flex-wrap justify-center gap-6 mb-10 text-sm">
-          <a
-            href="#"
-            className="text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            公式サイト
-          </a>
           <a
             href="#"
             className="text-muted-foreground hover:text-foreground transition-colors duration-300"

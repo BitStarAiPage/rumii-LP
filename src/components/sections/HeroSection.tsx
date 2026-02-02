@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
 /**
  * ヒーローセクション (01. メインビジュアル FV)
@@ -49,27 +48,11 @@ export function HeroSection() {
 
         {/* CTAボタン */}
         <div className="flex justify-center mt-[400px]">
-          <a href="#lineup" className="btn-rumii">
-            <Button
-              variant="outline"
-              className="px-8 py-6 text-sm tracking-wider border-foreground/20 bg-white/60 hover:bg-white/80 text-foreground backdrop-blur-sm transition-all duration-300"
-            >
-              Line upを見る
-              <svg
-                className="w-4 h-4 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </Button>
+          <a
+            href="#lineup"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-foreground text-white text-sm tracking-wider transition-opacity hover:opacity-90"
+          >
+            Line upを見る
           </a>
         </div>
 
