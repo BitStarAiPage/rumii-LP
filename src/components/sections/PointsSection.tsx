@@ -12,7 +12,7 @@ const points = [
     description:
       "「クリアブライトAZセラム」に高濃度のアゼライン酸を配合。肌のざらつきや毛穴悩みにダイレクトに届きます。",
     note: "※整肌成分",
-    image: "/asset_5.png",
+    image: "/other/other_image01.png",
   },
   {
     id: "02",
@@ -50,7 +50,7 @@ export function PointsSection() {
     >
       {/* 背景レイヤー */}
       <div
-        className="absolute inset-0 bg-[#F6FAFE]"
+        className="absolute inset-0 bg-[#E8F4FC]"
         aria-hidden="true"
       />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
@@ -64,7 +64,7 @@ export function PointsSection() {
           </p>
           <h2
             className="text-xl md:text-2xl tracking-[0.1em] text-foreground"
-            style={{ fontFamily: "var(--font-tenor), serif" }}
+            style={{ fontFamily: "var(--font-zen-kaku), sans-serif" }}
           >
             rumiiの3つのポイント
           </h2>
@@ -105,18 +105,21 @@ function PointCard({
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       {/* 番号 + タイトル */}
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-4 mb-6">
         <span
-          className="text-3xl text-primary/60 font-light"
+          className="text-5xl text-primary/60 font-light"
           style={{ fontFamily: "var(--font-tenor), serif" }}
         >
           {point.id}
         </span>
         <div>
-          <h3 className="text-lg md:text-xl font-medium text-foreground leading-tight">
+          <h3
+            className="text-lg md:text-xl font-medium text-foreground leading-tight"
+            style={{ fontFamily: "var(--font-zen-kaku), sans-serif" }}
+          >
             {point.title}
           </h3>
-          <p className="text-xs text-primary tracking-wider mt-1">
+          <p className="text-xs text-primary tracking-wider mt-2">
             {point.subtitle}
           </p>
         </div>
@@ -124,7 +127,7 @@ function PointCard({
 
       {/* 画像 */}
       <div
-        className={`relative w-full aspect-[16/9] rounded-lg overflow-hidden shadow-md mb-4 transition-all duration-700 ease-out ${
+        className={`relative w-[90%] mx-auto aspect-[16/9] rounded-lg overflow-hidden shadow-md mb-8 transition-all duration-700 ease-out ${
           isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
         }`}
         style={{ transitionDelay: `${index * 100 + 150}ms` }}
@@ -140,12 +143,12 @@ function PointCard({
       </div>
 
       {/* 説明文 */}
-      <div className="pl-1">
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-2">
+      <div className="max-w-[90%] mx-auto">
+        <p className="text-base md:text-lg text-muted-foreground leading-loose mb-3">
           {point.description}
         </p>
         {point.note && (
-          <p className="text-xs text-muted-foreground/60">
+          <p className="text-xs text-muted-foreground/60 mt-2">
             {point.note}
           </p>
         )}
@@ -153,7 +156,7 @@ function PointCard({
 
       {/* 区切り線 */}
       {!isLast && (
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-12">
           <div className="w-full h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
         </div>
       )}

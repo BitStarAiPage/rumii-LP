@@ -100,9 +100,14 @@ export function HeroSection() {
 
       {/* 下部グラデーション（次のセクションへの自然な遷移） */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/80 via-white/40 to-transparent pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
         aria-hidden="true"
-      />
+      >
+        {/* ベースのソフトグラデーション */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
+        {/* 色味を加えるレイヤー */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FFF0F5]/40 via-[#E0F7FA]/20 to-transparent blur-2xl" />
+      </div>
     </section>
   );
 }

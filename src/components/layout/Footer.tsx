@@ -11,7 +11,12 @@ export function Footer() {
     <footer className="relative py-16 overflow-hidden z-20">
       {/* 背景レイヤー */}
       <div
-        className="absolute inset-0 rumii-gradient-reverse"
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('/back/back_image06.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
         aria-hidden="true"
       />
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">

@@ -14,21 +14,27 @@ export function ConceptSection() {
     useScrollAnimation<HTMLDivElement>();
 
   return (
-    <section
-      id="concept"
-      className="sticky top-0 relative py-24 md:py-32 overflow-hidden z-10"
-      aria-label="コンセプト"
-      style={{
-        backgroundImage: "url('/back/back_image01.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="relative z-10">
+      <section
+        id="concept"
+        className="sticky top-0 relative pt-24 md:pt-32 pb-[150px] overflow-hidden"
+        aria-label="コンセプト"
+        style={{
+          backgroundImage: "url('/back/back_image01.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
       {/* 上部グラデーション（前のセクションからの自然な遷移） */}
       <div
-        className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/80 via-white/40 to-transparent pointer-events-none"
+        className="absolute -top-px left-0 right-0 h-28 pointer-events-none z-20"
         aria-hidden="true"
-      />
+      >
+        {/* ベースの白グラデーション */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/60 to-transparent" />
+        {/* 色味を加えるソフトレイヤー */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFF0F5]/40 via-[#E0F7FA]/20 to-transparent blur-2xl" />
+      </div>
 
       {/* 装飾: 放射状の光 */}
       <div
@@ -95,6 +101,9 @@ export function ConceptSection() {
         </div>
 
       </div>
-    </section>
+      </section>
+      {/* スクロール用スペーサー - 下のパディングが完全に表示されてからPointsSectionが来るようにする */}
+      <div className="h-[120px]" aria-hidden="true" />
+    </div>
   );
 }
