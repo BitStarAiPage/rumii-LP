@@ -13,6 +13,10 @@ export function ConceptSection() {
     useScrollAnimation<HTMLDivElement>();
   const { ref: copyRef, isVisible: copyVisible } =
     useScrollAnimation<HTMLDivElement>();
+  const { ref: imageRef, isVisible: imageVisible } =
+    useScrollAnimation<HTMLDivElement>();
+  const { ref: textRef, isVisible: textVisible } =
+    useScrollAnimation<HTMLDivElement>();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -59,7 +63,7 @@ export function ConceptSection() {
 
       {/* 装飾: 放射状の光 */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-30"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-30 animate-breathe"
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-gradient-radial from-white/60 via-[#E0F7FA]/30 to-transparent rounded-full blur-3xl" />
@@ -69,7 +73,7 @@ export function ConceptSection() {
         {/* セクションタイトル */}
         <div
           ref={titleRef}
-          className={`text-center mb-12 fade-in-up ${titleVisible ? "is-visible" : ""}`}
+          className={`text-center mb-12 blur-fade-in ${titleVisible ? "is-visible" : ""}`}
         >
           <h2
             className="text-2xl md:text-3xl leading-loose text-foreground font-medium"
@@ -84,37 +88,56 @@ export function ConceptSection() {
         {/* ボディコピー */}
         <div
           ref={copyRef}
-          className={`space-y-8 fade-in-up delay-200 ${copyVisible ? "is-visible" : ""}`}
+          className={`space-y-8 stagger-container ${copyVisible ? "is-visible" : ""}`}
         >
           {/* 画像 */}
           <div
-            className="relative w-full aspect-[4/3] mb-8"
+            ref={imageRef}
+            className={`relative w-full mb-8 image-float scale-fade-in ${imageVisible ? "is-visible" : ""}`}
             style={{
               maskImage: "radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%)",
               WebkitMaskImage: "radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%)",
+              transitionDelay: "200ms",
             }}
           >
             <Image
               src="/other/other_image02.png"
               alt="rumii製品イメージ"
-              fill
+              width={500}
+              height={375}
               sizes="(max-width: 768px) 100vw, 500px"
-              className="object-cover"
+              className="object-cover w-full h-auto"
             />
           </div>
 
-          <p
-            className="text-base md:text-lg text-center text-muted-foreground leading-loose mt-16"
-            style={{ fontFamily: "var(--font-tenor), 'Hiragino Mincho ProN', 'Yu Mincho', serif" }}
+          <div
+            ref={textRef}
+            className={`fade-slide-up ${textVisible ? "is-visible" : ""}`}
+            style={{ transitionDelay: "400ms" }}
           >
-            美白も、UVも、デザインも。
-            <br />
-            rumiiで、肌に光を仕込む。
-          </p>
+            <p
+              className="text-base md:text-lg text-center text-muted-foreground leading-loose mt-16"
+              style={{ fontFamily: "var(--font-tenor), 'Hiragino Mincho ProN', 'Yu Mincho', serif" }}
+            >
+              美白も、UVも、デザインも。
+              <br />
+              rumiiで、肌に光を仕込む。
+            </p>
+          </div>
 
-          <div className="w-12 h-px bg-border mx-auto" />
+          <div
+            className={`w-12 h-px bg-border mx-auto transition-all duration-1000 ${
+              textVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+            }`}
+            style={{ transitionDelay: "600ms" }}
+          />
 
-          <p className="text-sm md:text-base text-center text-muted-foreground leading-loose">
+          <p
+            className={`text-sm md:text-base text-center text-muted-foreground leading-loose fade-slide-up ${
+              textVisible ? "is-visible" : ""
+            }`}
+            style={{ transitionDelay: "800ms" }}
+          >
             整える、うるおう、毎日のベースケア。
             <br />
             肌悩みに合わせて、

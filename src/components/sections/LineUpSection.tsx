@@ -46,6 +46,8 @@ const products = [
 export function LineUpSection() {
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>();
+  const { ref: buttonRef, isVisible: buttonVisible } =
+    useScrollAnimation<HTMLDivElement>();
 
   // 無限スクロール用に製品を複製
   const duplicatedProducts = [...products, ...products];
@@ -59,11 +61,17 @@ export function LineUpSection() {
       {/* 背景 */}
       <div className="absolute inset-0 bg-white" aria-hidden="true" />
 
+      {/* 装飾的な背景エフェクト */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="absolute top-10 left-1/4 w-40 h-40 bg-gradient-radial from-[#E0F7FA]/30 to-transparent rounded-full blur-3xl animate-breathe" />
+        <div className="absolute bottom-20 right-1/4 w-60 h-60 bg-gradient-radial from-[#FFF0F5]/30 to-transparent rounded-full blur-3xl animate-breathe" style={{ animationDelay: '2s' }} />
+      </div>
+
       <div className="relative z-10">
         {/* セクションタイトル */}
         <div
           ref={titleRef}
-          className={`text-center mb-8 fade-in-up ${titleVisible ? "is-visible" : ""}`}
+          className={`text-center mb-8 blur-fade-in ${titleVisible ? "is-visible" : ""}`}
         >
           <h2
             className="text-2xl md:text-3xl tracking-[0.2em] text-foreground"
@@ -75,7 +83,11 @@ export function LineUpSection() {
 
         {/* 無限スクロールスライダー */}
         <div className="relative overflow-hidden">
-          <div className="flex animate-marquee">
+          {/* 左右のフェードオーバーレイ */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          <div className="flex animate-marquee hover:[animation-play-state:paused]">
             {duplicatedProducts.map((product, index) => (
               <div
                 key={`${product.id}-${index}`}
@@ -88,10 +100,13 @@ export function LineUpSection() {
         </div>
 
         {/* CTAボタン */}
-        <div className="mt-10 flex justify-center">
+        <div
+          ref={buttonRef}
+          className={`mt-10 flex justify-center scale-fade-in ${buttonVisible ? "is-visible" : ""}`}
+        >
           <a
             href="#"
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-foreground text-white text-sm tracking-wider transition-opacity hover:opacity-90"
+            className="btn-shine inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full bg-foreground text-white text-sm tracking-wider transition-all duration-300 hover:opacity-90 hover:scale-105"
           >
             購入する
           </a>
@@ -108,7 +123,7 @@ function ProductCard({
   product: (typeof products)[0];
 }) {
   return (
-    <div className="relative">
+    <div className="relative group cursor-pointer">
       {/* 製品画像 */}
       <div className="relative w-[80%] mx-auto aspect-square overflow-hidden mb-3">
         <Image
@@ -116,16 +131,16 @@ function ProductCard({
           alt={product.name}
           fill
           sizes="130px"
-          className="object-contain"
+          className="object-contain transition-transform duration-500 group-hover:scale-105"
         />
         {/* カテゴリラベル（左上） */}
-        <span className="absolute top-0 left-0 px-2 py-0.5 text-[10px] tracking-wider text-[#4BACB8] bg-[#E0F7FA] rounded-full">
+        <span className="absolute top-0 left-0 px-2 py-0.5 text-[10px] tracking-wider text-[#4BACB8] bg-[#E0F7FA] rounded-full transition-transform group-hover:scale-105">
           {product.category}
         </span>
       </div>
 
       {/* 製品情報 */}
-      <div className="text-center">
+      <div className="text-center transition-transform duration-300 group-hover:translate-y-[-2px]">
         <h3
           className="text-xs text-foreground leading-relaxed mb-1 line-clamp-2"
           style={{ fontFamily: "var(--font-zen-kaku), sans-serif" }}
@@ -143,7 +158,7 @@ function ProductCard({
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] px-2 py-0.5 rounded-full bg-[#E0F7FA] text-[#4BACB8]"
+              className="text-[10px] px-2 py-0.5 rounded-full bg-[#E0F7FA] text-[#4BACB8] transition-all duration-300 group-hover:bg-[#4BACB8] group-hover:text-white"
             >
               #{tag}
             </span>

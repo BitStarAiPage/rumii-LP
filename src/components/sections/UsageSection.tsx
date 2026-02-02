@@ -79,11 +79,17 @@ export function UsageSection() {
         aria-hidden="true"
       />
 
+      {/* 装飾的な背景エフェクト */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div className="absolute top-40 -right-20 w-60 h-60 bg-gradient-radial from-[#FFF0F5]/40 to-transparent rounded-full blur-3xl animate-breathe" />
+        <div className="absolute bottom-60 -left-20 w-80 h-80 bg-gradient-radial from-[#E0F7FA]/30 to-transparent rounded-full blur-3xl animate-breathe" style={{ animationDelay: '3s' }} />
+      </div>
+
       <div className="relative z-10 container mx-auto px-5 max-w-[500px]">
         {/* セクションタイトル */}
         <div
           ref={titleRef}
-          className={`text-center mb-12 fade-in-up ${titleVisible ? "is-visible" : ""}`}
+          className={`text-center mb-12 blur-fade-in ${titleVisible ? "is-visible" : ""}`}
         >
           <p className="text-xs tracking-[0.3em] text-[#4BACB8] mb-3">
             PRODUCTS
@@ -127,8 +133,8 @@ function ProductCard({
   return (
     <article
       ref={ref}
-      className={`w-[90%] mx-auto bg-white/70 backdrop-blur-sm rounded-2xl pt-12 pb-6 px-8 shadow-sm border border-white/80 fade-in-up ${isVisible ? "is-visible" : ""}`}
-      style={{ transitionDelay: `${index * 100}ms` }}
+      className={`w-[90%] mx-auto bg-white/70 backdrop-blur-sm rounded-2xl pt-12 pb-6 px-8 shadow-sm border border-white/80 card-hover-lift scale-fade-in ${isVisible ? "is-visible" : ""}`}
+      style={{ transitionDelay: `${index * 150}ms` }}
     >
       {/* 製品画像 */}
       <div className="relative w-[45%] mx-auto aspect-square mb-6">
@@ -191,7 +197,7 @@ function ProductCard({
         {product.tags.map((tag) => (
           <span
             key={tag}
-            className="text-xs px-3 py-1 rounded-full bg-[#E0F7FA] text-[#4BACB8]"
+            className="text-xs px-3 py-1 rounded-full bg-[#E0F7FA] text-[#4BACB8] transition-transform hover:scale-105"
           >
             {tag}
           </span>
@@ -202,7 +208,7 @@ function ProductCard({
       <div className="mt-6">
         <a
           href="#"
-          className="flex items-center justify-center gap-2 w-[70%] md:w-[55%] mx-auto py-3 rounded-full bg-foreground text-white text-sm tracking-wider transition-opacity hover:opacity-90"
+          className="btn-shine flex items-center justify-center gap-2 w-[70%] md:w-[55%] mx-auto py-3 rounded-full bg-foreground text-white text-sm tracking-wider transition-all duration-300 hover:opacity-90 hover:scale-105"
         >
           <svg
             className="w-5 h-5"
