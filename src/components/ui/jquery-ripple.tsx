@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import Script from 'next/script'
 
 interface JQueryRippleProps {
@@ -15,54 +15,90 @@ declare global {
   }
 }
 
+// グローバルでスクリプト読み込み状態を管理
+let jqueryLoaded = false
+let ripplesLoaded = false
+
 export function JQueryRipple({ children, imageUrl }: JQueryRippleProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInitialized = useRef(false)
   const [isDesktop, setIsDesktop] = useState(false)
+  const [scriptsReady, setScriptsReady] = useState(false)
 
+  // デスクトップ判定
   useEffect(() => {
-    setIsDesktop(window.innerWidth >= 768)
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768)
+    }
+    checkDesktop()
+    window.addEventListener('resize', checkDesktop)
+    return () => window.removeEventListener('resize', checkDesktop)
   }, [])
 
-  useEffect(() => {
-    if (!isDesktop) return
+  // 初期化関数
+  const initializeRipples = useCallback(() => {
+    if (!window.$ || !containerRef.current || isInitialized.current) return
 
-    const initializeRipples = () => {
-      if (!window.$ || !containerRef.current || isInitialized.current) return
+    const $ = window.$
+    const $container = $(containerRef.current)
 
-      const $ = window.$
-      const $container = $(containerRef.current)
-
-      if (typeof $container.ripples === 'function') {
-        try {
-          $container.ripples({
-            resolution: 256,      // 解像度（低いほど軽量）
-            dropRadius: 30,       // 波紋の半径
-            perturbance: 0.04,    // 揺らぎの強さ
-            interactive: true     // マウス追従を有効化
-          })
-          isInitialized.current = true
-        } catch (error) {
-          console.error('Failed to initialize ripples:', error)
-        }
+    if (typeof $container.ripples === 'function') {
+      try {
+        $container.ripples({
+          resolution: 256,
+          dropRadius: 30,
+          perturbance: 0.04,
+          interactive: true
+        })
+        isInitialized.current = true
+      } catch (error) {
+        console.error('Failed to initialize ripples:', error)
       }
     }
+  }, [])
 
-    if (document.readyState === 'complete') {
+  // スクリプト読み込み完了時に初期化
+  useEffect(() => {
+    if (!isDesktop || !scriptsReady) return
+
+    // 少し遅延させてDOMの準備を待つ
+    const timer = setTimeout(() => {
       initializeRipples()
-    } else {
-      window.addEventListener('load', initializeRipples)
-    }
+    }, 100)
 
     return () => {
+      clearTimeout(timer)
       if (window.$ && containerRef.current && isInitialized.current) {
         try {
           window.$(containerRef.current).ripples('destroy')
+          isInitialized.current = false
         } catch (error) {}
       }
-      window.removeEventListener('load', initializeRipples)
     }
-  }, [isDesktop])
+  }, [isDesktop, scriptsReady, initializeRipples])
+
+  const handleJQueryLoad = () => {
+    jqueryLoaded = true
+    if (ripplesLoaded) {
+      setScriptsReady(true)
+    }
+  }
+
+  const handleRipplesLoad = () => {
+    ripplesLoaded = true
+    if (jqueryLoaded) {
+      setScriptsReady(true)
+    }
+  }
+
+  // 既にスクリプトが読み込まれている場合
+  useEffect(() => {
+    if (window.$ && window.$.fn?.ripples) {
+      jqueryLoaded = true
+      ripplesLoaded = true
+      setScriptsReady(true)
+    }
+  }, [])
 
   return (
     <>
@@ -70,11 +106,13 @@ export function JQueryRipple({ children, imageUrl }: JQueryRippleProps) {
         <>
           <Script
             src="https://code.jquery.com/jquery-3.7.1.min.js"
-            strategy="beforeInteractive"
+            strategy="afterInteractive"
+            onLoad={handleJQueryLoad}
           />
           <Script
             src="/jquery.ripples.min.js"
             strategy="afterInteractive"
+            onLoad={handleRipplesLoad}
           />
         </>
       )}
