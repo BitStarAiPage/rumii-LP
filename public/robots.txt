@@ -1,0 +1,6 @@
+# robots.txt for rumii
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rumii-beauty.example.jp/sitemap.xml
