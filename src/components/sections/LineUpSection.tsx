@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // 製品データ
@@ -44,18 +43,11 @@ const products = [
   },
 ];
 
-// 2つずつのグループに分割
-const productGroups = [
-  products.slice(0, 2),
-  products.slice(2, 4),
-];
-
 /**
  * ラインナップセクション
- * インジケーター付きスライダー形式（2つずつ表示）
+ * スワイプスクロール対応スライダー
  */
 export function LineUpSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const { ref: titleRef, isVisible: titleVisible } =
     useScrollAnimation<HTMLDivElement>();
   const { ref: buttonRef, isVisible: buttonVisible } =
@@ -90,41 +82,40 @@ export function LineUpSection() {
           </h2>
         </div>
 
-        {/* スライダー */}
-        <div className="relative overflow-hidden px-5 max-w-[440px] mx-auto">
+        {/* スワイプスクロールスライダー */}
+        <div className="relative">
+          {/* 左右のフェードオーバーレイ */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
           <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-8 pb-4"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
+            }}
           >
-            {productGroups.map((group, groupIndex) => (
+            {products.map((product) => (
               <div
-                key={groupIndex}
-                className="flex-shrink-0 w-full flex justify-center gap-4"
+                key={product.id}
+                className="flex-shrink-0 w-[160px] snap-center"
               >
-                {group.map((product) => (
-                  <div key={product.id} className="w-[180px]">
-                    <ProductCard product={product} />
-                  </div>
-                ))}
+                <ProductCard product={product} />
               </div>
             ))}
           </div>
         </div>
 
-        {/* インジケーター */}
-        <div className="flex justify-center gap-3 mt-8">
-          {productGroups.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                currentIndex === index
-                  ? "bg-[#01385E] scale-110"
-                  : "bg-[#01385E]/30 hover:bg-[#01385E]/50"
-              }`}
-              aria-label={`スライド ${index + 1}`}
-            />
-          ))}
+        {/* スクロールヒント */}
+        <div className="flex justify-center items-center gap-2 mt-6 text-muted-foreground">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          <span className="text-xs tracking-wider">スワイプ</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </div>
 
         {/* CTAボタン */}

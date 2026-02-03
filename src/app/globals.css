@@ -110,6 +110,15 @@
   }
 }
 
+/* スクロールバー非表示ユーティリティ */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* =============================================
    Morning Sky グラデーション背景
    ============================================= */
@@ -215,6 +224,8 @@
   height: 400px;
   top: 5%;
   right: 5%;
+  /* スマホでは非表示 */
+  display: none;
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
@@ -266,6 +277,13 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* PC版では回転する光を表示 */
+@media (min-width: 768px) {
+  .lens-rays {
+    display: block;
   }
 }
 
@@ -1167,4 +1185,27 @@
 .rotate-fade-in.is-visible {
   opacity: 1;
   transform: rotate(0) scale(1);
+}
+
+/* =============================================
+   ヒーローセクション背景
+   ============================================= */
+
+.hero-bg {
+  /* スマホ: 別画像、横幅100%にフィット、高さは画像のアスペクト比に合わせる */
+  background-image: url('/back/back_image07.png');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  min-height: calc(100vw * 1.78); /* 画像のアスペクト比に合わせて調整 */
+}
+
+/* PC（768px以上）: 別画像、coverで全体をカバー */
+@media (min-width: 768px) {
+  .hero-bg {
+    background-image: url('/back/back_image08.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
 }

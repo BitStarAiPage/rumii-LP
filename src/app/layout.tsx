@@ -63,9 +63,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/SCREEN_image01.png",
+        width: 2940,
+        height: 1594,
         alt: "rumii - 光をまとわせる、スキンケア",
       },
     ],
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "rumii | 光をまとわせる、スキンケア",
     description: "rumiiは、光をまとわせるスキンケアブランドです。",
-    images: ["/og-image.png"],
+    images: ["/SCREEN_image01.png"],
   },
   robots: {
     index: true,

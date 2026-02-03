@@ -18,13 +18,8 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-screen overflow-hidden"
+      className="relative overflow-hidden hero-bg"
       aria-label="メインビジュアル"
-      style={{
-        backgroundImage: "url('/back/back_image08.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
       {/* メインコンテンツ */}
       <div className="relative z-10 container mx-auto px-5 pt-16 pb-20 max-w-[500px]">
@@ -67,7 +62,7 @@ export function HeroSection() {
 
         {/* CTAボタン */}
         <div
-          className={`flex justify-center mt-[400px] transition-all duration-1000 ease-out delay-700 ${
+          className={`flex justify-center mt-[320px] md:mt-[400px] transition-all duration-1000 ease-out delay-700 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -81,7 +76,7 @@ export function HeroSection() {
 
         {/* スクロールインジケーター */}
         <div
-          className={`flex justify-center mt-16 transition-all duration-1000 ease-out delay-1000 ${
+          className={`flex justify-center mt-6 md:mt-16 transition-all duration-1000 ease-out delay-1000 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -110,13 +105,15 @@ export function HeroSection() {
 
       {/* 下部グラデーション（次のセクションへの自然な遷移） */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-64 md:h-32 pointer-events-none"
         aria-hidden="true"
       >
-        {/* ベースのソフトグラデーション */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
+        {/* ベースのソフトグラデーション - スマホはより強く・広く */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#E8F4FC] via-[#E8F4FC]/70 md:from-white md:via-white/60 to-transparent" />
+        {/* 中間レイヤー（スマホのみ） */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent md:hidden" />
         {/* 色味を加えるレイヤー */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FFF0F5]/40 via-[#E0F7FA]/20 to-transparent blur-2xl" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#E8F4FC] md:from-[#FFF0F5]/40 via-[#E0F7FA]/40 md:via-[#E0F7FA]/20 to-transparent blur-lg md:blur-2xl" />
       </div>
     </section>
   );
