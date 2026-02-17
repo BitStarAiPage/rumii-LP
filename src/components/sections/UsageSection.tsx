@@ -11,12 +11,13 @@ const products = [
     nameEn: "CLEAR BRIGHT LOTION",
     nameJa: "薬用クリアブライトローション",
     description:
-      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウム配合。\n肌荒れを防いで透きとおる肌へ。",
+      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウムが肌あれを予防する。\n肌荒れを防いで透きとおる肌へ。",
     size: "150mL",
     price: "¥1,650",
     priceNote: "（税込）",
     image: "/product/product_Lotion_image01.png",
-    tags: ["透明感", "肌荒れ予防", "ニキビ予防"],
+    tags: ["透明感※", "肌荒れ予防", "ニキビ予防"],
+    note: "※肌にうるおいを与えることによる",
     darkTags: true,
   },
   {
@@ -25,13 +26,16 @@ const products = [
     nameEn: "WRINKLE UV EMULSION",
     nameJa: "薬用リンクルUVエマルジョン",
     description:
-      "これ1本で！美白もUVケアも！\n有効成分ナイアシンアミド配合で、シミ、シワもケア。",
+      "これ1本で！美白もUVケアも！",
+    descriptionNote: true,
+    descriptionAfter: "有効成分ナイアシンアミド配合で、シミ、シワもケア。",
     size: "50mL",
     price: "¥1,650",
     priceNote: "（税込）",
     image: "/product/product_UVem_image01.png",
-    tags: ["UV", "保湿", "敏感肌設計(パッチテスト済)"],
+    tags: ["UV", "保湿", "敏感肌設計(パッチテスト済※2)"],
     darkTags: true,
+    note: "※1 メラニンの生成を抑え、しみ、そばかすを防ぐ\n※2 全ての方に皮ふ刺激が発生しないということではありません",
   },
   {
     id: "serum",
@@ -39,13 +43,15 @@ const products = [
     nameEn: "CLEAR BRIGHT SERUM",
     nameJa: "薬用クリアブライトセラム",
     description:
-      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウム配合。\n透けるようなつるん肌へ。",
+      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウムが肌あれを予防する。\n透けるようなつるん肌へ。",
+    descriptionNote: true,
     size: "30mL",
     price: "¥1,980",
     priceNote: "（税込）",
     image: "/product/product_Serum_image01.png",
-    tags: ["毛穴ケア", "肌荒れ予防", "くすみ予防"],
+    tags: ["毛穴ケア※2", "肌荒れ予防", "くすみ予防※3"],
     darkTags: true,
+    note: "※1 肌にうるおいを与えることによる\n※2 肌を整えることによる\n※3 乾燥による",
   },
   {
     id: "az-serum",
@@ -53,13 +59,14 @@ const products = [
     nameEn: "CLEAR BRIGHT AZ SERUM",
     nameJa: "クリアブライトAZセラム",
     description:
-      "アゼライン酸11%配合。\n毛穴の目立ちを徹底ケア",
+      "アゼライン酸11％配合（肌荒れを防ぐ）\n毛穴の目立ちを徹底ケア",
     size: "30mL",
     price: "¥2,200",
     priceNote: "（税込）",
     image: "/product/product_AZSerum_image01.png",
-    tags: ["キメ", "毛穴ケア", "敏感肌設計(パッチテスト済)"],
+    tags: ["キメ", "毛穴ケア※1", "敏感肌設計(パッチテスト済※2)"],
     tagStyle: "pink",
+    note: "※1 肌を整えることによる\n※2 全ての方に皮ふ刺激が発生しないということではありません",
   },
 ];
 
@@ -169,7 +176,7 @@ function ProductCard({
 
       {/* 日本語名 */}
       <h3
-        className="text-lg font-medium text-foreground mb-4"
+        className={`${product.id === "lotion" ? "text-[16px]" : "text-lg"} font-medium text-foreground mb-4`}
         style={{ fontFamily: "var(--font-zen-kaku), sans-serif" }}
       >
         {product.nameJa}
@@ -183,6 +190,8 @@ function ProductCard({
       {/* 説明文 */}
       <p className="text-sm text-muted-foreground leading-relaxed mb-4 whitespace-pre-line">
         {product.description}
+        {product.descriptionNote && <span className="text-[9px] align-super">※1</span>}
+        {product.descriptionAfter && `\n${product.descriptionAfter}`}
       </p>
 
       {/* 容量・価格 */}
@@ -206,6 +215,7 @@ function ProductCard({
             tagClassName = "bg-[#F27B89] text-white";
           }
           const hasParentheses = tag.includes("(");
+          const hasNote = tag.includes("※");
           return (
             <span
               key={tag}
@@ -215,6 +225,11 @@ function ProductCard({
                 <>
                   {tag.split("(")[0]}
                   <span className="text-[9px]">({tag.split("(")[1]}</span>
+                </>
+              ) : hasNote ? (
+                <>
+                  {tag.split("※")[0]}
+                  <span className="text-[9px]">※{tag.split("※")[1]}</span>
                 </>
               ) : (
                 tag
@@ -246,6 +261,15 @@ function ProductCard({
           カートに入れる
         </a>
       </div>
+
+      {/* 注釈 */}
+      {product.note && (
+        <div className="flex justify-end mt-3">
+          <p className="text-[9px] text-muted-foreground/70 text-left whitespace-pre-line">
+            {product.note}
+          </p>
+        </div>
+      )}
     </article>
   );
 }

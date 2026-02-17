@@ -115,13 +115,8 @@ export function ConceptSection() {
             className={`fade-slide-up ${textVisible ? "is-visible" : ""}`}
             style={{ transitionDelay: "400ms" }}
           >
-            <p
-              className="text-base md:text-lg text-center text-muted-foreground leading-loose mt-16"
-              style={{ fontFamily: "var(--font-tenor), 'Hiragino Mincho ProN', 'Yu Mincho', serif" }}
-            >
-              美白も、UVも、デザインも。
-              <br />
-              rumiiで、肌に光を仕込む。
+            <p className="text-sm md:text-base text-center text-muted-foreground leading-loose mt-16">
+              乾燥対策 | 肌荒れ予防 | 揺らぎやすい肌に
             </p>
           </div>
 
@@ -140,13 +135,7 @@ export function ConceptSection() {
           >
             整える、うるおう、毎日のベースケア。
             <br />
-            肌悩みに合わせて、
-            <br className="sm:hidden" />
-            今の自分に
-            <span className="inline-block px-2 py-0.5 mx-1 rounded bg-gradient-to-r from-[#FFF0F5] to-[#E0F7FA] text-foreground font-medium">
-              &ldquo;選んで足す&rdquo;
-            </span>
-            ケア。
+            肌悩みに合わせて、今の自分に。
           </p>
         </div>
 

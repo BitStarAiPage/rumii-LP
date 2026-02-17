@@ -49,20 +49,32 @@ export function HeroSection() {
             }`}
             style={{ fontFamily: "var(--font-zen-kaku), sans-serif" }}
           >
-            光をまとわせる、スキンケア
+            光をまとわせる、スキンケア<span className="text-xs align-super">※1</span>
           </h2>
           <p
             className={`text-base md:text-lg text-muted-foreground leading-relaxed transition-all duration-1000 ease-out delay-500 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            乾燥から肌を守り、澄みわたる透明肌へ
+            乾燥から肌を守り、澄みわたる透明肌へ<span className="text-xs align-super">※2</span>
+          </p>
+        </div>
+
+        {/* 注釈 */}
+        <div
+          className={`flex justify-end mt-[320px] md:mt-[400px] transition-all duration-1000 ease-out delay-700 ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <p className="text-[10px] text-muted-foreground text-left">
+            ※1 肌にツヤを与えることによる<br />
+            ※2 肌にうるおいを与えることによる
           </p>
         </div>
 
         {/* CTAボタン */}
         <div
-          className={`flex justify-center mt-[320px] md:mt-[400px] transition-all duration-1000 ease-out delay-700 ${
+          className={`flex justify-center mt-6 transition-all duration-1000 ease-out delay-700 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >

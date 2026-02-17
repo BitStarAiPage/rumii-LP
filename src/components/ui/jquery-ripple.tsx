@@ -15,14 +15,11 @@ declare global {
   }
 }
 
-// グローバルでスクリプト読み込み状態を管理
-let jqueryLoaded = false
-let ripplesLoaded = false
-
 export function JQueryRipple({ children, imageUrl }: JQueryRippleProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInitialized = useRef(false)
   const [isDesktop, setIsDesktop] = useState(false)
+  const [jqueryLoaded, setJqueryLoaded] = useState(false)
   const [scriptsReady, setScriptsReady] = useState(false)
 
   // デスクトップ判定
@@ -77,25 +74,10 @@ export function JQueryRipple({ children, imageUrl }: JQueryRippleProps) {
     }
   }, [isDesktop, scriptsReady, initializeRipples])
 
-  const handleJQueryLoad = () => {
-    jqueryLoaded = true
-    if (ripplesLoaded) {
-      setScriptsReady(true)
-    }
-  }
-
-  const handleRipplesLoad = () => {
-    ripplesLoaded = true
-    if (jqueryLoaded) {
-      setScriptsReady(true)
-    }
-  }
-
   // 既にスクリプトが読み込まれている場合
   useEffect(() => {
     if (window.$ && window.$.fn?.ripples) {
-      jqueryLoaded = true
-      ripplesLoaded = true
+      setJqueryLoaded(true)
       setScriptsReady(true)
     }
   }, [])
@@ -107,13 +89,15 @@ export function JQueryRipple({ children, imageUrl }: JQueryRippleProps) {
           <Script
             src="https://code.jquery.com/jquery-3.7.1.min.js"
             strategy="afterInteractive"
-            onLoad={handleJQueryLoad}
+            onLoad={() => setJqueryLoaded(true)}
           />
-          <Script
-            src="/jquery.ripples.min.js"
-            strategy="afterInteractive"
-            onLoad={handleRipplesLoad}
-          />
+          {jqueryLoaded && (
+            <Script
+              src="/jquery.ripples.min.js"
+              strategy="afterInteractive"
+              onLoad={() => setScriptsReady(true)}
+            />
+          )}
         </>
       )}
 

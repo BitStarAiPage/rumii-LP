@@ -8,20 +8,32 @@ const points = [
   {
     id: "01",
     title: "美白",
+    titleNote: "※",
     subtitle: "薬用の安心感",
-    description:
-      "ニキビ・シミ・くすみは明確なエビデンスと「薬用」という安心感で。",
+    description: "",
     note: "",
+    descriptionNotes: [
+      "※1：乾燥によるもの",
+      "※2：クリアブライトAZセラムを除く",
+    ],
+    imageNotes: [
+      "※メラニンの生成を抑え、しみ、そばかすを防ぐ",
+      "※クリアブライトAZセラムを除く",
+    ],
     image: "/other/other_image06.png",
     size: "85%",
   },
   {
     id: "02",
     title: "UV",
+    titleNote: "※",
     subtitle: "肌にやさしい設計",
     description:
       "毎日使うものだからこそ、使いやすく肌にやさしい設計。",
     note: "",
+    imageNotes: [
+      "※対象：薬用リンクルUVエマルジョン",
+    ],
     image: "/other/other_image07.png",
     size: "85%",
   },
@@ -110,7 +122,7 @@ function PointCard({
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       {/* 番号 + タイトル */}
-      <div className="flex items-center gap-4 mb-6 ml-[30px]">
+      <div className="flex items-center gap-4 mb-3 ml-[30px]">
         <span
           className={`text-5xl text-primary/60 font-light transition-all duration-700 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
@@ -128,12 +140,24 @@ function PointCard({
             style={{ fontFamily: "var(--font-zen-kaku), sans-serif" }}
           >
             {point.title}
+            {point.titleNote && <span className="text-[10px] align-super">{point.titleNote}</span>}
           </h3>
           <p className="text-xs text-primary tracking-wider mt-2">
             {point.subtitle}
           </p>
         </div>
       </div>
+
+      {/* 注釈（画像の外・右上） */}
+      {point.imageNotes && point.imageNotes.length > 0 && (
+        <div className="flex justify-end mb-2">
+          <div className="text-[9px] text-muted-foreground/70 text-left leading-relaxed relative z-20">
+            {point.imageNotes.map((n, i) => (
+              <p key={i}>{n}</p>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* 画像 */}
       <div
@@ -159,9 +183,24 @@ function PointCard({
         }`}
         style={{ transitionDelay: `${index * 150 + 400}ms` }}
       >
-        <p className="text-base md:text-lg text-muted-foreground leading-loose mb-3">
-          {point.description}
-        </p>
+        {point.description ? (
+          <p className="text-base md:text-lg text-muted-foreground leading-loose mb-3">
+            {point.description}
+          </p>
+        ) : point.id === "01" ? (
+          <p className="text-base md:text-lg text-muted-foreground leading-loose mb-3">
+            ニキビ・シミ・くすみ<span className="text-xs align-super">*1</span>は明確なエビデンスと「薬用<span className="text-xs align-super">*2</span>」という安心感で。
+          </p>
+        ) : null}
+        {point.descriptionNotes && point.descriptionNotes.length > 0 && (
+          <div className="flex justify-end">
+            <div className="text-[9px] text-muted-foreground/70 text-left leading-relaxed">
+              {point.descriptionNotes.map((n, i) => (
+                <p key={i}>{n}</p>
+              ))}
+            </div>
+          </div>
+        )}
         {point.note && (
           <p className="text-xs text-muted-foreground/60 mt-2">
             {point.note}

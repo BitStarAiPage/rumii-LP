@@ -99,7 +99,7 @@ export function LineUpSection() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="flex-shrink-0 w-[160px] snap-center"
+                className="flex-shrink-0 w-[175px] snap-center"
               >
                 <ProductCard product={product} />
               </div>
