@@ -25,10 +25,10 @@ export function Footer() {
         {/* ブランドロゴ */}
         <div className="text-center mb-10">
           <Image
-            src="/logo/logo_image01.png"
+            src="/logo/logo_image02.png"
             alt="rumii"
-            width={160}
-            height={53}
+            width={140}
+            height={46}
             className="h-auto mx-auto"
           />
         </div>
