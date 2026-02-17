@@ -161,7 +161,7 @@ function PointCard({
 
       {/* 画像 */}
       <div
-        className={`mx-auto rounded-lg overflow-hidden mt-8 mb-8 image-hover-zoom image-float transition-all duration-700 ease-out ${
+        className={`mx-auto rounded-lg overflow-hidden mt-8 mb-8 image-hover-zoom transition-all duration-700 ease-out ${
           isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
         }`}
         style={{ transitionDelay: `${index * 150 + 300}ms`, width: point.size }}
