@@ -1201,17 +1201,17 @@
 
 .hero-bg {
   /* スマホ: 別画像、横幅100%にフィット、高さは画像のアスペクト比に合わせる */
-  background-image: url('/back/back_image07.png');
+  background-image: url('/back/back_image03.png');
   background-position: top center;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  min-height: calc(100vw * 1.78); /* 画像のアスペクト比に合わせて調整 */
+  min-height: calc(100vw * 1.59); /* 画像のアスペクト比に合わせて調整 */
 }
 
-/* PC（768px以上）: 別画像、coverで全体をカバー */
+/* PC（768px以上）: メインコンテンツ幅(500px)に合わせて表示 */
 @media (min-width: 768px) {
   .hero-bg {
-    background-image: url('/back/back_image08.png');
+    background-image: url('/back/back_image03.png');
     background-size: cover;
     background-position: center;
     min-height: 100vh;

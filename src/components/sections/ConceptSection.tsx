@@ -93,7 +93,7 @@ export function ConceptSection() {
           {/* 画像 */}
           <div
             ref={imageRef}
-            className={`relative w-full mb-8 image-float scale-fade-in ${imageVisible ? "is-visible" : ""}`}
+            className={`relative w-full mb-8 scale-fade-in ${imageVisible ? "is-visible" : ""}`}
             style={{
               maskImage: "radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%)",
               WebkitMaskImage: "radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%)",
