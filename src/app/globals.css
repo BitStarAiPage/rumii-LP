@@ -707,7 +707,7 @@
 :root {
   --main-content-max-width: 460px;
   --fixed-sidebar-min-width: 50px;
-  --fixed-sidebar-width: max(var(--fixed-sidebar-min-width), calc((100vw - var(--main-content-max-width)) / 2));
+  --fixed-sidebar-width: max(var(--fixed-sidebar-min-width), calc((100vw - var(--main-content-max-width)) / 2 + 1px));
 }
 
 /* 固定サイドバー共通スタイル */
@@ -838,6 +838,8 @@
 @media (min-width: 768px) {
   .main-content-with-sidebars {
     max-width: var(--main-content-max-width);
+    box-shadow: none;
+    outline: none;
   }
 }
 
