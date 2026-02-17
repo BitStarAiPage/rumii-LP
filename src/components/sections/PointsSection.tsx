@@ -44,7 +44,7 @@ const points = [
     description:
       "フル蒸着オーロラ加工で、つい使いたくなるパッケージデザイン。",
     note: "",
-    image: "/other/other_image01.png",
+    image: "/other/other_image05.png",
     size: "85%",
   },
 ];

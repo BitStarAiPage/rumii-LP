@@ -117,15 +117,10 @@ export function HeroSection() {
 
       {/* 下部グラデーション（次のセクションへの自然な遷移） */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-64 md:h-32 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-[150px] md:h-[120px] pointer-events-none z-10"
         aria-hidden="true"
       >
-        {/* ベースのソフトグラデーション - スマホはより強く・広く */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#E8F4FC] via-[#E8F4FC]/70 md:from-white md:via-white/60 to-transparent" />
-        {/* 中間レイヤー（スマホのみ） */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent md:hidden" />
-        {/* 色味を加えるレイヤー */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#E8F4FC] md:from-[#FFF0F5]/40 via-[#E0F7FA]/40 md:via-[#E0F7FA]/20 to-transparent blur-lg md:blur-2xl" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
       </div>
     </section>
   );
