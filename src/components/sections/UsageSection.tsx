@@ -11,7 +11,7 @@ const products = [
     nameEn: "CLEAR BRIGHT LOTION",
     nameJa: "薬用クリアブライトローション",
     description:
-      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウムが肌あれを予防する。\n肌荒れを防いで透きとおる肌へ。",
+      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウムが肌荒れを予防する。\n肌荒れを防いで透きとおる肌へ。",
     size: "150mL",
     price: "¥1,650",
     priceNote: "（税込）",
@@ -43,7 +43,7 @@ const products = [
     nameEn: "CLEAR BRIGHT SERUM",
     nameJa: "薬用クリアブライトセラム",
     description:
-      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウムが肌あれを予防する。\n透けるようなつるん肌へ。",
+      "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウムが肌荒れを予防する。\n透けるようなつるん肌へ。",
     descriptionNote: true,
     size: "30mL",
     price: "¥1,980",
