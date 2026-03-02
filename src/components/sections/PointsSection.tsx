@@ -20,7 +20,7 @@ const points = [
       "※メラニンの生成を抑え、しみ、そばかすを防ぐ",
       "※クリアブライトAZセラムを除く",
     ],
-    image: "/other/other_image06.png",
+    image: "/other/other_image06.webp",
     size: "85%",
   },
   {
@@ -34,7 +34,7 @@ const points = [
     imageNotes: [
       "※対象：薬用リンクルUVエマルジョン",
     ],
-    image: "/other/other_image07.png",
+    image: "/other/other_image07.webp",
     size: "85%",
   },
   {
@@ -44,7 +44,7 @@ const points = [
     description:
       "フル蒸着オーロラ加工で、つい使いたくなるパッケージデザイン。",
     note: "",
-    image: "/other/other_image05.png",
+    image: "/other/other_image05.webp",
     size: "85%",
   },
 ];

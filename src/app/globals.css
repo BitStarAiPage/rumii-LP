@@ -1201,7 +1201,7 @@
 
 .hero-bg {
   /* スマホ: 画像の高さをセクションに合わせる */
-  background-image: url('/back/back_image03.png');
+  background-image: url('/back/back_image03.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1210,7 +1210,7 @@
 /* PC（768px以上）: メインコンテンツ幅(500px)に合わせて表示 */
 @media (min-width: 768px) {
   .hero-bg {
-    background-image: url('/back/back_image03.png');
+    background-image: url('/back/back_image03.webp');
     background-size: cover;
     background-position: center;
     min-height: 100vh;

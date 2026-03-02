@@ -60,7 +60,7 @@ export function RenewalPointSection() {
             </p>
             <div className="mt-6 relative w-full aspect-[2/1] rounded-xl overflow-hidden">
               <Image
-                src="/other/other_image04.png"
+                src="/other/other_image04.webp"
                 alt="美白イメージ"
                 fill
                 sizes="(max-width: 768px) 100vw, 500px"
@@ -90,7 +90,7 @@ export function RenewalPointSection() {
             </p>
             <div className="mt-6 relative w-full aspect-[2/1] rounded-xl overflow-hidden">
               <Image
-                src="/asset_5.png"
+                src="/asset_5.webp"
                 alt="UVケアイメージ"
                 fill
                 sizes="(max-width: 768px) 100vw, 500px"
@@ -138,7 +138,7 @@ export function RenewalPointSection() {
         >
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src="/other/other_image03.png"
+              src="/other/other_image03.webp"
               alt="透明感あふれる肌"
               fill
               sizes="(max-width: 768px) 100vw, 500px"

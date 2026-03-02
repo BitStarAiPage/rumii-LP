@@ -101,7 +101,7 @@ export function ConceptSection() {
             }}
           >
             <Image
-              src="/other/other_image02.png"
+              src="/other/other_image02.webp"
               alt="rumii製品イメージ"
               width={500}
               height={375}

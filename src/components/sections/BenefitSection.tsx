@@ -42,7 +42,7 @@ export function BenefitSection() {
           <div className="relative">
             <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <Image
-                src="/asset_3.png"
+                src="/asset_3.webp"
                 alt="使用前の肌"
                 fill
                 sizes="(max-width: 768px) 100vw, 500px"
@@ -100,7 +100,7 @@ export function BenefitSection() {
           <div className="relative">
             <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden shadow-md">
               <Image
-                src="/asset_4.png"
+                src="/asset_4.webp"
                 alt="使用後の輝く肌"
                 fill
                 sizes="(max-width: 768px) 100vw, 500px"
