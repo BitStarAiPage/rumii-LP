@@ -150,7 +150,7 @@ function PointCard({
 
       {/* 注釈（画像の外・右上） */}
       {point.imageNotes && point.imageNotes.length > 0 && (
-        <div className="flex justify-end mb-2">
+        <div className="mx-auto flex justify-end mb-2 mt-[-20px]" style={{ width: point.size }}>
           <div className="text-[9px] text-muted-foreground/70 text-left leading-relaxed relative z-20">
             {point.imageNotes.map((n, i) => (
               <p key={i}>{n}</p>
