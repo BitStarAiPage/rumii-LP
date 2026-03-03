@@ -12,7 +12,7 @@ const products = [
     nameJa: "薬用クリアブライトローション",
     description:
       "W有効成分ナイアシンアミド、グリチルリチン酸ジカリウムが肌荒れを予防する。\n肌荒れを防いで透きとおる肌へ。",
-    size: "150mL",
+    size: "110mL",
     price: "¥1,650",
     priceNote: "（税込）",
     image: "/product/product_Lotion_image01.png",
@@ -29,7 +29,7 @@ const products = [
       "これ1本で！美白もUVケアも！",
     descriptionNote: true,
     descriptionAfter: "有効成分ナイアシンアミド配合で、シミ、シワもケア。",
-    size: "50mL",
+    size: "80mL",
     price: "¥1,650",
     priceNote: "（税込）",
     image: "/product/product_UVem_image01.png",
