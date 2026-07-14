@@ -1,8 +1,13 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
-      "destination": "https://rumii.bitstar.tokyo/lp/:path*",
+      "source": "/",
+      "destination": "https://rumii.bitstar.tokyo/lp/",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "destination": "https://rumii.bitstar.tokyo/lp/:path+",
       "permanent": true
     }
   ]
