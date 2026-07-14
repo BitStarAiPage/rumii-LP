@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://rumii.bitstar.tokyo/lp/:path*",
+      "permanent": true
+    }
+  ]
+}
